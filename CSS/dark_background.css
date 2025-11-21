@@ -1,0 +1,204 @@
+/* ------------------------------------------------------------ */
+/* Navigation dropdown fixes */
+/* ------------------------------------------------------------ */
+
+nav#site-navigation .menu-item-has-children > a::after {
+    content: none !important;
+}
+
+nav#site-navigation ul.sub-menu > li.menu-item-has-children > a::after {
+    content: "▶";
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 6px;
+    font-weight: bold;
+    color: inherit;
+    transform: none;
+    background: none;
+    border: none;
+    width: auto;
+    height: auto;
+}
+
+/* First-level dropdown position */
+nav#site-navigation ul.sub-menu {
+    position: absolute !important;
+    left: 0 !important;
+    top: 100% !important;
+    width: 200px;
+}
+
+/* Second-level dropdown opens to the right */
+nav#site-navigation ul.sub-menu ul {
+    left: 100% !important;
+    right: auto !important;
+    top: 0 !important;
+}
+
+/* Enable automatic hover dropdown */
+nav#site-navigation .menu-item-has-children:hover > .sub-menu {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* ------------------------------------------------------------ */
+/* Tech For Talk Landing Page Styles */
+/* ------------------------------------------------------------ */
+
+.tft-landing {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.tft-hero {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.tft-hero h1 {
+    font-size: 2.4rem;
+    margin-bottom: .5rem;
+}
+
+.tft-hero p {
+    font-size: 1.05rem;
+    max-width: 720px;
+    margin: .3rem auto 1.5rem;
+    line-height: 1.6;
+}
+
+.tft-section-title {
+    font-size: 1.6rem;
+    margin: 2.5rem 0 1.2rem;
+}
+
+/* ------------------------------------------------------------ */
+/* Category Grid — now forced to 3 columns */
+/* ------------------------------------------------------------ */
+
+.tft-category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+/* Tablet view — 2 cards per row */
+@media (max-width: 1024px) {
+    .tft-category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile — 1 card per row */
+@media (max-width: 640px) {
+    .tft-category-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ------------------------------------------------------------ */
+/* Category Card (new modern navy gradient) */
+/* ------------------------------------------------------------ */
+
+.tft-cat-card {
+    position: relative;
+    display: block;
+    padding: 1.2rem 1.2rem 1.1rem;
+    border-radius: 14px;
+    text-decoration: none;
+    background: linear-gradient(135deg, #1e293b, #0f172a);  /* NEW VIBRANT NAVY */
+    color: #e5e7eb;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+.tft-cat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.75);
+    border-color: #22c55e; /* modern green accent */
+}
+
+.tft-cat-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: .4rem;
+}
+
+.tft-cat-meta {
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    opacity: .85;
+}
+
+.tft-cat-desc {
+    margin-top: .6rem;
+    font-size: .9rem;
+    line-height: 1.5;
+    opacity: .9;
+}
+
+.tft-cat-tag {
+    position: absolute;
+    right: .9rem;
+    top: .9rem;
+    font-size: .7rem;
+    padding: .25rem .55rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+/* ------------------------------------------------------------ */
+/* Latest Posts Section */
+/* ------------------------------------------------------------ */
+
+.tft-latest-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.tft-latest-item + .tft-latest-item {
+    margin-top: .9rem;
+    padding-top: .9rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.tft-latest-link {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: .98rem;
+}
+
+.tft-latest-meta {
+    display: block;
+    font-size: .8rem;
+    opacity: .7;
+    margin-top: .15rem;
+}
+
+/* Two-column layout for latest posts */
+.tft-two-col {
+    display: grid;
+    grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.5fr);
+    gap: 2.5rem;
+    margin-top: 2.2rem;
+}
+
+@media (max-width: 768px) {
+    .tft-hero h1 {
+        font-size: 1.9rem;
+    }
+
+    .tft-two-col {
+        grid-template-columns: 1fr;
+    }
+}
