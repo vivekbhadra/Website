@@ -109,7 +109,7 @@ nav#site-navigation .menu-item-has-children:hover > .sub-menu {
     padding: 1.2rem 1.2rem 1.1rem;
     border-radius: 14px;
     text-decoration: none;
-    background: linear-gradient(135deg, #06b6d4, #0ea5e9);  /* Aqua -> Sky Blue */
+    background: linear-gradient(135deg, #06b6d4, #0ea5e9);
     color: #ffffff;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
     overflow: hidden;
@@ -121,6 +121,12 @@ nav#site-navigation .menu-item-has-children:hover > .sub-menu {
     transform: translateY(-4px);
     box-shadow: 0 18px 40px rgba(14, 165, 233, 0.55);
     border-color: #ffffff;
+}
+
+/* Increase card height so tag fits properly */
+.tft-cat-card {
+    min-height: 250px !important;
+    padding-bottom: 2.8rem !important;
 }
 
 /* Title, meta, description remain unchanged */
