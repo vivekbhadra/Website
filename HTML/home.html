@@ -2,11 +2,11 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-   TECHFORTALK Â· ENGINEERING CONSOLE THEME
-   tokens: ink #0E1726 Â· paper #F7F9FB
-           accent #2050F5 Â· terminal #0C1117
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─────────────────────────────────────────────────
+   TECHFORTALK · ENGINEERING CONSOLE THEME
+   tokens: ink #0E1726 · paper #F7F9FB
+           accent #2050F5 · terminal #0C1117
+   ───────────────────────────────────────────────── */
 
 .tft-landing *,
 .tft-landing *::before,
@@ -116,7 +116,7 @@
   text-decoration: none !important;
 }
 
-/* â”€â”€ HERO: TERMINAL PANEL â”€â”€ */
+/* ── HERO: TERMINAL PANEL ── */
 .tft-hero {
   background: var(--tft-term);
   border: 1px solid var(--tft-term-line);
@@ -228,7 +228,7 @@
   border-radius: 6px;
 }
 
-/* â”€â”€ HERO: ANIMATED ENGINEERING VISUAL â”€â”€ */
+/* ── HERO: ANIMATED ENGINEERING VISUAL ── */
 .tft-hero-visual {
   position: relative;
   min-height: 300px;
@@ -399,7 +399,7 @@
   }
 }
 
-/* â”€â”€ FEATURED BOOK â”€â”€ */
+/* ── FEATURED BOOK ── */
 .tft-book {
   display: flex;
   align-items: stretch;
@@ -510,7 +510,7 @@
   white-space: nowrap;
 }
 
-/* â”€â”€ SECTION HEADERS â”€â”€ */
+/* ── SECTION HEADERS ── */
 .tft-section-header {
   margin: 0 0 1.4rem !important;
 }
@@ -525,13 +525,13 @@
   line-height: 1.2 !important;
 }
 
-/* retired decorations â€” kept as no-ops in case of cached markup */
+/* retired decorations — kept as no-ops in case of cached markup */
 .tft-section-header .tft-count,
 .tft-section-header .tft-rule {
   display: none !important;
 }
 
-/* â”€â”€ CATEGORY GRID â”€â”€ */
+/* ── CATEGORY GRID ── */
 .tft-category-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -609,7 +609,7 @@
 }
 
 .tft-cat-card--wide .tft-cat-path::after {
-  content: ' Â· active';
+  content: ' · active';
   color: #1BAA6F;
 }
 
@@ -618,7 +618,7 @@
   grid-column: span 1;
 }
 
-/* â”€â”€ CONTAINER-AWARE RESPONSIVE LAYOUT â”€â”€
+/* ── CONTAINER-AWARE RESPONSIVE LAYOUT ──
    Respond to the actual WordPress content width, including when a sidebar
    reduces the available space on a laptop. */
 @container tft-page (max-width: 1024px) {
@@ -681,7 +681,7 @@
 
 /* Viewport fallbacks for browsers without container-query support. */
 
-/* Tablet: 2 columns â€” wide/span cards go full width */
+/* Tablet: 2 columns — wide/span cards go full width */
 @media (max-width: 1024px) {
   .tft-landing .tft-hero-body {
     grid-template-columns: minmax(0, 1.25fr) minmax(270px, 0.75fr);
@@ -738,7 +738,7 @@
   <section class="tft-hero">
     <div class="tft-hero-bar">
       <div class="tft-hero-dots"><span></span><span></span><span></span></div>
-      <span class="tft-hero-bar-title">techfortalk â€” zsh</span>
+      <span class="tft-hero-bar-title">techfortalk — zsh</span>
     </div>
 
     <div class="tft-hero-body">
@@ -751,7 +751,7 @@
 
         <p class="tft-hero-sub">
           In-depth, easy-to-follow technical writing on C++, Linux, embedded
-          systems, cloud engineering, and generative AI â€” plus live projects
+          systems, cloud engineering, and generative AI — plus live projects
           documented as they're built.
         </p>
 
@@ -773,7 +773,7 @@
         <div class="tft-chip">
           <span class="tft-chip-file">systems.cpp</span>
           <strong>C++</strong>
-          <span class="tft-chip-status">â— build Â· test Â· ship</span>
+          <span class="tft-chip-status">● build · test · ship</span>
         </div>
 
         <span class="tft-packet tft-packet--one"></span>
@@ -787,7 +787,7 @@
      target="_blank" rel="noopener" class="tft-book">
     <div class="tft-book-spine"><span>Published</span></div>
     <div class="tft-book-body">
-      <div class="tft-book-kicker">The book Â· available on Amazon</div>
+      <div class="tft-book-kicker">The book · available on Amazon</div>
       <h2>Prompting C++ for Systems Engineering</h2>
       <p>
         An in-depth book covering the most important areas of modern C++ and systems engineering, including STL, multithreading, debugging, testing, prompt engineering, and practical ways to leverage AI. It also presents real-world debugging techniques and professional insights drawn from extensive C++ development experience. Includes the full table of contents and regional purchase links.
@@ -797,7 +797,7 @@
          src="https://techfortalk.co.uk/wp-content/uploads/2026/07/Prompting_CPP_thumbnail.png"
          alt="Cover of Prompting C++ for Systems Engineering by Vivek Bhadra"
          width="300" height="450" loading="lazy" decoding="async" />
-    <span class="tft-book-cta">view book â†’</span>
+    <span class="tft-book-cta">view book →</span>
   </a>
 
   <!-- PROFESSIONAL TRAINING -->
@@ -806,17 +806,17 @@
      class="tft-book tft-book--training">
     <div class="tft-book-spine"><span>Training</span></div>
     <div class="tft-book-body">
-      <div class="tft-book-kicker">Professional training Â· 1-to-1 and small groups</div>
+      <div class="tft-book-kicker">Professional training · 1-to-1 and small groups</div>
       <h2>Professional C++ and Embedded Software Training</h2>
       <p>
-        Hands-on professional training in C++ for finance, embedded systems development, Linux kernel development, device drivers from scratch, STM32 bootloader development, secure bootloaders, and bare-metal programming â€” taught by a published C++ author with 24+ years of industry experience.
+        Hands-on professional training in C++ for finance, embedded systems development, Linux kernel development, device drivers from scratch, STM32 bootloader development, secure bootloaders, and bare-metal programming — taught by a published C++ author with 24+ years of industry experience.
       </p>
     </div>
     <img class="tft-book-cover"
          src="https://techfortalk.co.uk/wp-content/uploads/2026/07/CPP_Embedded_Training_thumbnail.png"
          alt="Professional C++ and Embedded Software Training"
          width="300" height="450" loading="lazy" decoding="async" />
-    <span class="tft-book-cta">view courses â†’</span>
+    <span class="tft-book-cta">view courses →</span>
   </a>
 
   <!-- CATEGORIES -->
@@ -831,7 +831,7 @@
       <span class="tft-cat-path">~/live-projects</span>
       <span class="tft-cat-name">Live Projects</span>
       <p class="tft-cat-desc">
-        Real engineering projects documented in real time â€” architecture
+        Real engineering projects documented in real time — architecture
         decisions, code walkthroughs, and lessons learned as they happen.
       </p>
     </a>
@@ -951,4 +951,3 @@
 </div>
 </div>
 <!-- /wp:html -->
-
