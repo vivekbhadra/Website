@@ -1,6 +1,12 @@
 <!-- wp:html -->
 <style>
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   TECHFORTALK Â· ENGINEERING CONSOLE THEME
+   tokens: ink #0E1726 Â· paper #F7F9FB
+           accent #2050F5 Â· terminal #0C1117
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .tft-landing *,
 .tft-landing *::before,
@@ -11,501 +17,938 @@
 }
 
 .tft-landing {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 1.5rem 5rem;
-  font-family: 'DM Sans', system-ui, sans-serif;
-  color: #0f172a;
-}
+  --tft-ink: #0E1726;
+  --tft-ink-soft: #46536B;
+  --tft-ink-faint: #7C879C;
+  --tft-paper: #F7F9FB;
+  --tft-line: #DDE3EC;
+  --tft-accent: #2050F5;
+  --tft-accent-dim: #E8EDFE;
+  --tft-term: #0C1117;
+  --tft-term-line: #1C2530;
+  --tft-term-text: #C9D4E3;
+  --tft-green: #3DDC97;
 
-/* ── HERO ── */
-.tft-hero {
-  text-align: center;
-  padding: 3.5rem 1rem 3rem;
-  margin-bottom: 0.5rem;
-}
-
-.tft-hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #0369a1;
-  border: 1.5px solid #bae6fd;
-  padding: 0.3rem 0.85rem;
-  border-radius: 999px;
-  margin-bottom: 1.6rem;
-  background: rgba(224, 242, 254, 0.85);
-  backdrop-filter: blur(8px);
-}
-
-.tft-hero-eyebrow::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #0ea5e9;
-  animation: tft-blink 2s ease-in-out infinite;
-}
-
-@keyframes tft-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
-}
-
-.tft-hero h1 {
-  font-family: 'Syne', sans-serif;
-  font-size: clamp(2.1rem, 5vw, 3.4rem);
-  font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  color: #0f172a;
-  margin-bottom: 1.1rem;
-  text-shadow: 0 1px 3px rgba(255,255,255,0.9);
-}
-
-.tft-hero h1 em {
-  font-style: normal;
-  color: #0284c7;
-}
-
-.tft-hero-sub {
-  font-size: 1.05rem;
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  line-height: 1.8;
-  color: #475569;
-  font-weight: 300;
-  letter-spacing: 0.01em;
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(6px);
-  display: inline-block;
-  padding: 0.4rem 1rem;
-  border-radius: 8px;
-}
-
-/* ── SECTION HEADER ── */
-.tft-section-header {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  margin: 2.8rem 0 1.2rem;
-}
-
-.tft-section-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.68rem;
-  text-transform: uppercase;
-  letter-spacing: 0.13em;
-  color: #0369a1;
-  white-space: nowrap;
-  background: rgba(224,242,254,0.85);
-  border: 1px solid #bae6fd;
-  padding: 0.3rem 0.7rem;
-  border-radius: 6px;
-}
-
-.tft-section-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, #cbd5e1, transparent);
-}
-
-/* ── CATEGORY GRID ── */
-.tft-category-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1rem;
-}
-
-/* Regular cards: 2 of 6 cols = 3 per row */
-.tft-cat-card {
-  grid-column: span 2;
-}
-
-/* Wide cards: 3 of 6 cols = 2 per row, side by side */
-.tft-cat-card--wide {
-  grid-column: span 3 !important;
-}
-
-@media (max-width: 1024px) {
-  .tft-category-grid { grid-template-columns: repeat(4, 1fr); }
-  .tft-cat-card { grid-column: span 2; }
-  .tft-cat-card--wide { grid-column: span 2 !important; }
-}
-@media (max-width: 600px) {
-  .tft-category-grid { grid-template-columns: 1fr; }
-  .tft-cat-card { grid-column: span 1; }
-  .tft-cat-card--wide { grid-column: span 1 !important; }
-}
-
-/* ── CATEGORY CARD ── */
-.tft-cat-card {
-  position: relative;
-  display: block;
-  padding: 1.4rem 1.3rem 1.3rem;
-  border-radius: 14px;
-  text-decoration: none;
-  color: #0f172a;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.95);
-  box-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 4px 16px rgba(15,23,42,0.07);
-  min-height: 190px;
-  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  /* Stay inside the available WordPress content column. */
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  float: none !important;
+  clear: both !important;
+  display: block !important;
   overflow: hidden;
+  overflow: clip;
+  container-name: tft-page;
+  container-type: inline-size;
+
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  color: var(--tft-ink);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left !important;
+
+  /* Own canvas: stops the section floating on the theme's grey backdrop */
+  background: var(--tft-paper) !important;
 }
 
-/* Wide card variant */
-.tft-cat-card--wide {
-  grid-column: span 2;
-  min-height: 0 !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+/* Inner wrapper: centres content and caps the line length */
+.tft-wrap {
+  width: 100%;
+  max-width: 1200px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1rem, 3.5vw, 2rem) 5rem;
 }
 
-.tft-cat-card--wide .tft-cat-desc {
+/* Prevent nested flex/grid items from forcing horizontal overflow. */
+.tft-landing .tft-wrap > *,
+.tft-landing .tft-hero-body > *,
+.tft-landing .tft-category-grid > * {
+  min-width: 0;
   max-width: 100%;
 }
 
-.tft-cat-card::after {
+.tft-landing h1,
+.tft-landing h2,
+.tft-landing h3,
+.tft-landing p,
+.tft-landing a,
+.tft-landing li,
+.tft-landing span {
+  overflow-wrap: anywhere;
+}
+
+/* ALIGNMENT + TYPOGRAPHY ARMOUR:
+   the active theme centres text, uppercases headings, recolours links,
+   and adds paragraph margins. Re-assert this section's own design. */
+.tft-landing h1,
+.tft-landing h2,
+.tft-landing h3,
+.tft-landing p,
+.tft-landing a,
+.tft-landing span,
+.tft-landing div,
+.tft-landing section,
+.tft-landing ul,
+.tft-landing li {
+  text-align: left !important;
+  text-transform: none !important;
+}
+
+.tft-landing h1,
+.tft-landing h2 {
+  font-family: 'Archivo', sans-serif !important;
+  margin-top: 0 !important;
+}
+
+.tft-landing p {
+  margin-top: 0 !important;
+}
+
+.tft-landing a {
+  box-shadow: none !important;
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+
+/* â”€â”€ HERO: TERMINAL PANEL â”€â”€ */
+.tft-hero {
+  background: var(--tft-term);
+  border: 1px solid var(--tft-term-line);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.tft-hero-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1.1rem;
+  border-bottom: 1px solid var(--tft-term-line);
+}
+
+.tft-hero-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.tft-hero-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2A3542;
+}
+
+.tft-hero-bar-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #5D6B7E;
+}
+
+.tft-hero-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(300px, 0.75fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: center;
+  padding: 2.6rem 2.2rem 2.8rem;
+}
+
+.tft-hero-copy { min-width: 0; }
+
+.tft-hero-prompt {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--tft-term-text) !important;
+  margin: 0 0 1.6rem !important;
+}
+
+.tft-hero-prompt .tft-p-user { color: var(--tft-green); }
+.tft-hero-prompt .tft-p-path { color: #6FA8FF; }
+.tft-hero-prompt .tft-p-cmd  { color: var(--tft-term-text); }
+
+.tft-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: var(--tft-green);
+  vertical-align: text-bottom;
+  margin-left: 4px;
+  animation: tft-blink 1.1s steps(1) infinite;
+}
+
+@keyframes tft-blink {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+
+.tft-hero h1 {
+  font-family: 'Archivo', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(2rem, 4.6vw, 3.3rem) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -0.025em !important;
+  color: #F2F6FB !important;
+  max-width: 17ch;
+  margin: 0 0 1.2rem !important;
+}
+
+.tft-hero h1 em {
+  font-style: normal !important;
+  color: #6FA8FF !important;
+}
+
+.tft-hero-sub {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #97A4B8 !important;
+  max-width: 58ch;
+  margin: 0 0 1.8rem !important;
+}
+
+.tft-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tft-hero-tags span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  color: #8FA0B8;
+  border: 1px solid var(--tft-term-line);
+  padding: 0.28rem 0.65rem;
+  border-radius: 6px;
+}
+
+/* â”€â”€ HERO: ANIMATED ENGINEERING VISUAL â”€â”€ */
+.tft-hero-visual {
+  position: relative;
+  min-height: 300px;
+  overflow: hidden;
+  border: 1px solid var(--tft-term-line);
+  border-radius: 12px;
+  background:
+    linear-gradient(rgba(111, 168, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(111, 168, 255, 0.055) 1px, transparent 1px),
+    radial-gradient(circle at 50% 50%, rgba(32, 80, 245, 0.16), transparent 62%);
+  background-size: 24px 24px, 24px 24px, auto;
+  isolation: isolate;
+  contain: layout paint;
+  transform: translateZ(0);
+}
+
+.tft-hero-visual::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, #38bdf8, #818cf8);
-  opacity: 0;
-  transition: opacity 0.2s;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(61, 220, 151, 0.12) 48%, rgba(61, 220, 151, 0.38) 50%, rgba(61, 220, 151, 0.12) 52%, transparent 100%);
+  transform: translateY(-100%);
+  animation: tft-scan 4.8s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+  will-change: transform;
 }
 
-.tft-cat-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(15,23,42,0.12);
-  background: rgba(255,255,255,0.95);
+.tft-hero-visual::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 184px;
+  height: 184px;
+  border: 1px dashed rgba(111, 168, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: tft-orbit 18s linear infinite;
+  z-index: 0;
+  will-change: transform;
 }
 
-.tft-cat-card:hover::after {
-  opacity: 1;
+.tft-chip {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 156px;
+  padding: 1rem 1.05rem;
+  transform: translate(-50%, -50%);
+  border: 1px solid #315172;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #111C28, #081018);
+  box-shadow: 0 0 0 8px rgba(32, 80, 245, 0.06), 0 0 36px rgba(32, 80, 245, 0.22);
+  z-index: 2;
 }
 
-.tft-cat-card:hover .tft-cat-arrow {
-  opacity: 1;
-  transform: translate(0, 0);
+.tft-chip-file,
+.tft-chip-status {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #74859B !important;
 }
 
-/* Featured card */
-.tft-cat-card--featured {
-  background: rgba(239,246,255,0.9);
-  border-color: #bfdbfe;
+.tft-chip-file {
+  margin-bottom: 0.3rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
 }
 
-.tft-cat-card--featured::after {
-  background: linear-gradient(90deg, #818cf8, #38bdf8);
+.tft-chip strong {
+  display: block;
+  color: #6FA8FF;
+  font-family: 'Archivo', sans-serif;
+  font-size: 2.1rem;
+  line-height: 1;
+  letter-spacing: -0.04em;
 }
 
-.tft-cat-card--featured .tft-cat-badge {
-  background: #ede9fe;
-  color: #6d28d9;
-  border-color: #c4b5fd;
+.tft-chip-status {
+  margin-top: 0.5rem;
+  font-size: 0.57rem;
+  color: var(--tft-green) !important;
 }
 
-.tft-cat-card--featured .tft-cat-meta {
-  color: #7c3aed;
-}
-
-/* Card internals */
-.tft-cat-row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-}
-
-.tft-cat-badge {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.58rem;
-  font-weight: 600;
-  letter-spacing: 0.07em;
-  color: #0369a1;
-  background: #e0f2fe;
-  border: 1px solid #bae6fd;
-  padding: 0.22rem 0.6rem;
+.tft-node {
+  position: absolute;
+  z-index: 2;
+  padding: 0.35rem 0.58rem;
+  border: 1px solid #26384B;
   border-radius: 6px;
+  background: rgba(12, 17, 23, 0.94);
+  color: #9EB0C6 !important;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.61rem;
+  letter-spacing: 0.04em;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.24);
+}
+
+.tft-node::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 0.42rem;
+  border-radius: 50%;
+  background: var(--tft-green);
+  box-shadow: 0 0 8px rgba(61, 220, 151, 0.8);
+}
+
+.tft-node--linux { left: 7%; top: 14%; }
+.tft-node--embedded { right: 6%; top: 18%; }
+.tft-node--cloud { left: 8%; bottom: 13%; }
+.tft-node--ai { right: 9%; bottom: 12%; }
+
+.tft-packet {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #6FA8FF;
+  box-shadow: 0 0 10px rgba(111, 168, 255, 0.9);
+  z-index: 1;
+  will-change: transform, opacity;
+}
+
+.tft-packet--one {
+  left: 14%;
+  top: 47%;
+  animation: tft-packet-x 3.6s ease-in-out infinite alternate;
+}
+
+.tft-packet--two {
+  right: 17%;
+  top: 34%;
+  background: var(--tft-green);
+  animation: tft-packet-y 3s ease-in-out infinite alternate;
+}
+
+@keyframes tft-scan {
+  from { transform: translate3d(0, -100%, 0); }
+  to { transform: translate3d(0, 100%, 0); }
+}
+
+@keyframes tft-orbit {
+  from { transform: translate3d(-50%, -50%, 0) rotate(0deg); }
+  to { transform: translate3d(-50%, -50%, 0) rotate(360deg); }
+}
+
+@keyframes tft-packet-x {
+  from { transform: translate3d(0, 0, 0); opacity: 0.35; }
+  to { transform: translate3d(88px, 0, 0); opacity: 1; }
+}
+
+@keyframes tft-packet-y {
+  from { transform: translate3d(0, 0, 0); opacity: 1; }
+  to { transform: translate3d(0, 92px, 0); opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tft-cursor,
+  .tft-hero-visual::before,
+  .tft-hero-visual::after,
+  .tft-chip,
+  .tft-node,
+  .tft-packet {
+    animation: none !important;
+  }
+}
+
+/* â”€â”€ FEATURED BOOK â”€â”€ */
+.tft-book {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  text-decoration: none;
+  border: 1px solid var(--tft-line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #FFFFFF;
+  margin-bottom: 3rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tft-book:hover,
+.tft-book:focus-visible {
+  border-color: var(--tft-accent);
+  box-shadow: 0 4px 20px rgba(32, 80, 245, 0.10);
+}
+
+.tft-book-spine {
+  flex: 0 0 auto;
+  width: 56px;
+  background: var(--tft-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tft-book--training .tft-book-spine {
+  background: #1BAA6F;
+}
+
+.tft-book--training:hover,
+.tft-book--training:focus-visible {
+  border-color: #1BAA6F;
+  box-shadow: 0 4px 20px rgba(27, 170, 111, 0.12);
+}
+
+.tft-book--training .tft-book-kicker,
+.tft-book--training .tft-book-cta {
+  color: #1BAA6F !important;
+}
+
+.tft-book-spine span {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: #FFFFFF;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
   text-transform: uppercase;
 }
 
-.tft-cat-arrow {
-  font-size: 1rem;
-  color: #94a3b8;
-  opacity: 0;
-  transform: translate(-3px, 3px);
-  transition: all 0.18s ease;
-  line-height: 1;
+.tft-book-body {
+  padding: 1.6rem 1.8rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.tft-book-kicker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase !important;
+  color: var(--tft-accent) !important;
+  margin: 0 0 0.5rem !important;
+}
+
+.tft-book h2 {
+  font-family: 'Archivo', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.35rem !important;
+  letter-spacing: -0.01em !important;
+  color: var(--tft-ink) !important;
+  margin: 0 0 0.5rem !important;
+}
+
+.tft-book p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--tft-ink-soft) !important;
+  max-width: 72ch;
+  margin: 0 !important;
+}
+
+.tft-book-cover {
+  display: block;
+  flex: 0 0 auto;
+  align-self: center;
+  width: 112px;
+  height: auto;
+  margin: 1rem 1.4rem 1rem 0.4rem;
+  border: 1px solid var(--tft-line);
+  border-radius: 4px;
+  box-shadow: 0 5px 14px rgba(14, 23, 38, 0.12);
+  object-fit: cover;
+}
+
+.tft-book-cta {
+  align-self: center;
+  flex: 0 0 auto;
+  margin-right: 1.8rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--tft-accent) !important;
+  white-space: nowrap;
+}
+
+/* â”€â”€ SECTION HEADERS â”€â”€ */
+.tft-section-header {
+  margin: 0 0 1.4rem !important;
+}
+
+.tft-section-header h2 {
+  font-family: 'Archivo', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem) !important;
+  letter-spacing: -0.015em !important;
+  color: var(--tft-ink) !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* retired decorations â€” kept as no-ops in case of cached markup */
+.tft-section-header .tft-count,
+.tft-section-header .tft-rule {
+  display: none !important;
+}
+
+/* â”€â”€ CATEGORY GRID â”€â”€ */
+.tft-category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-bottom: 3rem;
+}
+
+.tft-cat-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.15rem 1.2rem 1.2rem;
+  background: #FFFFFF;
+  border: 1px solid var(--tft-line);
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--tft-ink);
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tft-cat-card:hover,
+.tft-cat-card:focus-visible {
+  border-color: var(--tft-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(14, 23, 38, 0.08);
+}
+
+.tft-cat-card:hover .tft-cat-path,
+.tft-cat-card:focus-visible .tft-cat-path {
+  color: var(--tft-accent);
+}
+
+.tft-landing a:focus-visible {
+  outline: 2px solid var(--tft-accent);
+  outline-offset: 2px;
+}
+
+.tft-cat-path {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--tft-ink-faint) !important;
+  margin: 0 0 0.7rem !important;
+  transition: color 0.15s ease;
+  display: block;
 }
 
 .tft-cat-name {
-  font-family: 'Syne', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 0.18rem;
-  line-height: 1.25;
-  letter-spacing: -0.01em;
-}
-
-.tft-cat-meta {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.61rem;
-  color: #0369a1;
-  letter-spacing: 0.07em;
-  margin-bottom: 0.55rem;
-  opacity: 0.8;
+  font-family: 'Archivo', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  color: var(--tft-ink) !important;
+  margin: 0 0 0.45rem !important;
+  display: block;
 }
 
 .tft-cat-desc {
   font-size: 0.83rem;
-  line-height: 1.65;
-  color: #64748b;
-  font-weight: 400;
-  letter-spacing: 0.01em;
-}
-
-/* ── TWO-COL ── */
-.tft-two-col {
-  display: grid;
-  grid-template-columns: minmax(0, 2.5fr) minmax(0, 1.5fr);
-  gap: 2rem;
-  margin-top: 0;
-}
-
-@media (max-width: 768px) {
-  .tft-two-col { grid-template-columns: 1fr; }
-  .tft-hero h1 { font-size: 1.9rem; }
-}
-
-/* ── LATEST POSTS ── */
-.tft-latest-list {
-  list-style: none;
-  background: rgba(255,255,255,0.82);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(255,255,255,0.95);
-  border-radius: 14px;
-  box-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 4px 16px rgba(15,23,42,0.07);
-  overflow: hidden;
-}
-
-.tft-latest-item {
-  padding: 0.9rem 1.2rem;
-  border-bottom: 1px solid #f1f5f9;
-  transition: background 0.15s;
-}
-
-.tft-latest-item:last-child { border-bottom: none; }
-.tft-latest-item:hover { background: rgba(248,250,252,0.95); }
-
-.tft-latest-link {
-  text-decoration: none;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  font-size: 0.88rem;
-  color: #1e293b;
-  line-height: 1.45;
-  display: block;
-  transition: color 0.15s;
-  letter-spacing: 0.005em;
-}
-
-.tft-latest-link:hover { color: #0284c7; }
-
-.tft-latest-meta {
-  display: block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.63rem;
-  color: #94a3b8;
-  margin-top: 0.25rem;
-  letter-spacing: 0.04em;
-}
-
-/* ── SOURCE CODE CARD ── */
-.source-code-card {
-  display: block !important;
-  text-decoration: none !important;
-  background: rgba(255,255,255,0.82) !important;
-  backdrop-filter: blur(14px) !important;
-  border: 1px solid rgba(255,255,255,0.95) !important;
-  box-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 4px 16px rgba(15,23,42,0.07) !important;
-  border-radius: 14px !important;
-  padding: 1.4rem 1.3rem !important;
-  min-height: auto !important;
+  line-height: 1.6;
+  color: var(--tft-ink-soft) !important;
   margin: 0 !important;
-  color: #0f172a !important;
-  transition: transform 0.18s ease, box-shadow 0.18s ease !important;
-  position: relative !important;
-  overflow: hidden !important;
 }
 
-.source-code-card:hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 8px 30px rgba(15,23,42,0.12) !important;
+/* Wide cards (Live Projects / AI Projects) */
+.tft-cat-card--wide {
+  grid-column: span 1;
+  background: var(--tft-accent-dim);
+  border-color: #C6D3FB;
 }
 
-.source-code-card .tft-cat-name { color: #0f172a !important; }
-.source-code-card .tft-cat-meta { color: #0369a1 !important; }
-.source-code-card .tft-cat-desc { color: #64748b !important; }
-.source-code-card .tft-cat-arrow { opacity: 1 !important; transform: translate(0,0) !important; }
+.tft-cat-card--wide .tft-cat-path {
+  color: var(--tft-accent) !important;
+}
 
-/* ── NAV OVERRIDES (preserved) ── */
-nav#site-navigation .menu-item-has-children > a::after { content: none !important; }
-nav#site-navigation ul.sub-menu > li.menu-item-has-children > a::after {
-  content: "▶"; font-size: 14px; display: inline-block; margin-left: 6px;
-  font-weight: bold; color: inherit; transform: none; background: none;
-  border: none; width: auto; height: auto;
+.tft-cat-card--wide .tft-cat-path::after {
+  content: ' Â· active';
+  color: #1BAA6F;
 }
-nav#site-navigation ul.sub-menu {
-  position: absolute !important; left: 0 !important; top: 100% !important; width: 200px;
+
+/* Span-2 cards (normal styling, used to balance the grid) */
+.tft-cat-card--span {
+  grid-column: span 1;
 }
-nav#site-navigation ul.sub-menu ul { left: 100% !important; right: auto !important; top: 0 !important; }
-nav#site-navigation .menu-item-has-children:hover > .sub-menu {
-  display: block !important; visibility: visible !important; opacity: 1 !important;
+
+/* â”€â”€ CONTAINER-AWARE RESPONSIVE LAYOUT â”€â”€
+   Respond to the actual WordPress content width, including when a sidebar
+   reduces the available space on a laptop. */
+@container tft-page (max-width: 1024px) {
+  .tft-landing .tft-hero-body {
+    grid-template-columns: minmax(0, 1.25fr) minmax(250px, 0.75fr);
+    gap: 1.5rem;
+  }
+
+  .tft-landing .tft-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tft-landing .tft-cat-card--wide,
+  .tft-landing .tft-cat-card--span {
+    grid-column: span 1;
+  }
+}
+
+@container tft-page (max-width: 760px) {
+  .tft-landing .tft-hero-body { grid-template-columns: 1fr; }
+  .tft-landing .tft-hero-visual { min-height: 260px; }
+  .tft-landing .tft-book { flex-direction: column; }
+
+  .tft-landing .tft-book-spine {
+    width: 100%;
+    height: 40px;
+  }
+
+  .tft-landing .tft-book-spine span {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+
+  .tft-landing .tft-book-body { padding: 1.3rem 1.4rem 1rem; }
+
+  .tft-landing .tft-book-cover {
+    width: 120px;
+    margin: 0 auto 1.2rem;
+  }
+
+  .tft-landing .tft-book-cta {
+    align-self: flex-start;
+    margin: 0 1.4rem 1.3rem;
+  }
+}
+
+@container tft-page (max-width: 560px) {
+  .tft-landing .tft-hero-body { padding: 1.7rem 1.2rem 1.9rem; }
+  .tft-landing .tft-hero-prompt { font-size: 0.74rem; }
+  .tft-landing .tft-hero-visual { min-height: 230px; }
+  .tft-landing .tft-node { font-size: 0.55rem; }
+  .tft-landing .tft-chip { width: 140px; }
+  .tft-landing .tft-category-grid { grid-template-columns: 1fr; }
+
+  .tft-landing .tft-cat-card--wide,
+  .tft-landing .tft-cat-card--span {
+    grid-column: span 1;
+  }
+}
+
+/* Viewport fallbacks for browsers without container-query support. */
+
+/* Tablet: 2 columns â€” wide/span cards go full width */
+@media (max-width: 1024px) {
+  .tft-landing .tft-hero-body {
+    grid-template-columns: minmax(0, 1.25fr) minmax(270px, 0.75fr);
+    gap: 1.5rem;
+  }
+  .tft-landing .tft-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .tft-landing .tft-cat-card--wide,
+  .tft-landing .tft-cat-card--span { grid-column: span 1; }
+}
+
+/* Small tablet / large phone: book card stacks */
+@media (max-width: 760px) {
+  .tft-landing .tft-hero-body { grid-template-columns: 1fr; }
+  .tft-landing .tft-hero-visual { min-height: 260px; }
+  .tft-landing .tft-book { flex-direction: column; }
+  .tft-landing .tft-book-spine {
+    width: 100%;
+    height: 40px;
+  }
+  .tft-landing .tft-book-spine span {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+  .tft-landing .tft-book-body { padding: 1.3rem 1.4rem 1rem; }
+  .tft-landing .tft-book-cover {
+    width: 120px;
+    margin: 0 auto 1.2rem;
+  }
+  .tft-landing .tft-book-cta {
+    align-self: flex-start;
+    margin: 0 1.4rem 1.3rem;
+  }
+}
+
+/* Phone: single column */
+@media (max-width: 560px) {
+  .tft-landing .tft-hero-body { padding: 1.7rem 1.2rem 1.9rem; }
+  .tft-landing .tft-hero-prompt { font-size: 0.74rem; }
+  .tft-landing .tft-hero-visual { min-height: 230px; }
+  .tft-landing .tft-node { font-size: 0.55rem; }
+  .tft-landing .tft-chip { width: 140px; }
+  .tft-landing .tft-category-grid { grid-template-columns: 1fr; }
+  .tft-landing .tft-cat-card--wide,
+  .tft-landing .tft-cat-card--span { grid-column: span 1; }
 }
 </style>
 
-<div class="tft-landing">
+<div class="tft-landing tft-page-shell">
+<div class="tft-wrap tft-page-inner">
 
   <!-- HERO -->
   <section class="tft-hero">
-    <h1>Deep-dive articles for<br><em>software professionals</em></h1>
-    <p class="tft-hero-sub">In-depth, easy-to-follow technical articles on C++, Linux, embedded systems, cloud computing, cloud-native application development, generative AI, and AI-driven live engineering projects, written for software professionals and AI enthusiasts.</p>
+    <div class="tft-hero-bar">
+      <div class="tft-hero-dots"><span></span><span></span><span></span></div>
+      <span class="tft-hero-bar-title">techfortalk â€” zsh</span>
+    </div>
+
+    <div class="tft-hero-body">
+      <div class="tft-hero-copy">
+        <p class="tft-hero-prompt">
+          <span class="tft-p-user">vivek@techfortalk</span><span class="tft-p-cmd">:</span><span class="tft-p-path">~</span><span class="tft-p-cmd">$ cat about.txt</span><span class="tft-cursor"></span>
+        </p>
+
+        <h1>Deep-dive articles for <em>software professionals</em></h1>
+
+        <p class="tft-hero-sub">
+          In-depth, easy-to-follow technical writing on C++, Linux, embedded
+          systems, cloud engineering, and generative AI â€” plus live projects
+          documented as they're built.
+        </p>
+
+        <div class="tft-hero-tags">
+          <span>C++</span>
+          <span>Linux kernel</span>
+          <span>Embedded &amp; IoT</span>
+          <span>AWS / DevOps</span>
+          <span>AI / ML</span>
+        </div>
+      </div>
+
+      <div class="tft-hero-visual" aria-hidden="true">
+        <span class="tft-node tft-node--linux">Linux</span>
+        <span class="tft-node tft-node--embedded">Embedded</span>
+        <span class="tft-node tft-node--cloud">Cloud</span>
+        <span class="tft-node tft-node--ai">AI / ML</span>
+
+        <div class="tft-chip">
+          <span class="tft-chip-file">systems.cpp</span>
+          <strong>C++</strong>
+          <span class="tft-chip-status">â— build Â· test Â· ship</span>
+        </div>
+
+        <span class="tft-packet tft-packet--one"></span>
+        <span class="tft-packet tft-packet--two"></span>
+      </div>
+    </div>
   </section>
 
-  <!-- CATEGORY GRID -->
-  <div class="tft-category-grid">
+  <!-- FEATURED BOOK -->
+  <a href="https://techfortalk.co.uk/prompting-cpp-for-systems-engineering/"
+     target="_blank" rel="noopener" class="tft-book">
+    <div class="tft-book-spine"><span>Published</span></div>
+    <div class="tft-book-body">
+      <div class="tft-book-kicker">The book Â· available on Amazon</div>
+      <h2>Prompting C++ for Systems Engineering</h2>
+      <p>
+        An in-depth book covering the most important areas of modern C++ and systems engineering, including STL, multithreading, debugging, testing, prompt engineering, and practical ways to leverage AI. It also presents real-world debugging techniques and professional insights drawn from extensive C++ development experience. Includes the full table of contents and regional purchase links.
+      </p>
+    </div>
+    <img class="tft-book-cover"
+         src="https://techfortalk.co.uk/wp-content/uploads/2026/07/Prompting_CPP_thumbnail.png"
+         alt="Cover of Prompting C++ for Systems Engineering by Vivek Bhadra"
+         width="300" height="450" loading="lazy" decoding="async" />
+    <span class="tft-book-cta">view book â†’</span>
+  </a>
 
-    <a href="https://techfortalk.co.uk/category/live-projects/" class="tft-cat-card tft-cat-card--wide">
-      <div class="tft-cat-row">
-        <span class="tft-cat-badge">LP</span>
-        <span class="tft-cat-arrow">↗</span>
-      </div>
-      <div class="tft-cat-name">Live Projects</div>
-      <div class="tft-cat-meta">Real · Hands-On · In Progress</div>
-      <p class="tft-cat-desc">Active engineering projects documented in real time, including architecture decisions, code walkthroughs, and lessons learned as they happen.</p>
-    </a>
+  <!-- PROFESSIONAL TRAINING -->
+  <a href="https://techfortalk.co.uk/professional-training/"
+     target="_blank" rel="noopener"
+     class="tft-book tft-book--training">
+    <div class="tft-book-spine"><span>Training</span></div>
+    <div class="tft-book-body">
+      <div class="tft-book-kicker">Professional training Â· 1-to-1 and small groups</div>
+      <h2>Professional C++ and Embedded Software Training</h2>
+      <p>
+        Hands-on professional training in C++ for finance, embedded systems development, Linux kernel development, device drivers from scratch, STM32 bootloader development, secure bootloaders, and bare-metal programming â€” taught by a published C++ author with 24+ years of industry experience.
+      </p>
+    </div>
+    <img class="tft-book-cover"
+         src="https://techfortalk.co.uk/wp-content/uploads/2026/07/CPP_Embedded_Training_thumbnail.png"
+         alt="Professional C++ and Embedded Software Training"
+         width="300" height="450" loading="lazy" decoding="async" />
+    <span class="tft-book-cta">view courses â†’</span>
+  </a>
 
-    <a href="https://techfortalk.co.uk/category/ai-projects/" class="tft-cat-card tft-cat-card--wide">
-      <div class="tft-cat-row">
-        <span class="tft-cat-badge">AP</span>
-        <span class="tft-cat-arrow">↗</span>
-      </div>
-      <div class="tft-cat-name">AI Projects</div>
-      <div class="tft-cat-meta">GenAI · LLMs · Automation</div>
-      <p class="tft-cat-desc">Practical AI engineering projects built with generative AI, multimodal models, APIs, Python, and end-to-end automation workflows.</p>
-    </a>
-
-    <a href="https://techfortalk.co.uk/category/online-books/" class="tft-cat-card tft-cat-card--featured">
-      <div class="tft-cat-row">
-        <span class="tft-cat-badge">BK</span>
-        <span class="tft-cat-arrow">↗</span>
-      </div>
-      <div class="tft-cat-name">Online Books</div>
-      <div class="tft-cat-meta">Full-Length Guides</div>
-      <p class="tft-cat-desc">Complete, structured technical books published chapter by chapter — starting with "Understanding C++ Templates: A Comprehensive Guide".</p>
-    </a>
-
-    <a href="https://techfortalk.co.uk/category/c-c-programming/" class="tft-cat-card">
-      <div class="tft-cat-row">
-        <span class="tft-cat-badge">C++</span>
-        <span class="tft-cat-arrow">↗</span>
-      </div>
-      <div class="tft-cat-name">C/C++ Programming</div>
-      <div class="tft-cat-meta">Templates · Memory · Systems</div>
-      <p class="tft-cat-desc">Modern C/C++ articles covering templates, RAII, memory management, and real-world performance engineering.</p>
-    </a>
-
-    <a href="https://techfortalk.co.uk/category/linux-kernel-development/" class="tft-cat-card">
-      <div class="tft-cat-row">
-        <span class="tft-cat-badge">LX</span>
-        <span class="tft-cat-arrow">↗</span>
-      </div>
-      <div class="tft-cat-name">Linux &amp; Kernel Development</div>
-      <div class="tft-cat-meta">Drivers · Internals</div>
-      <p class="tft-cat-desc">Kernel programming, Linux internals, drivers, debugging tools, and low-level systems engineering.</p>
-    </a>
-
-    <a href="https://techfortalk.co.uk/category/embedded-systems-iot/" class="tft-cat-card">
-      <div class="tft-cat-row">
-        <span class="tft-cat-badge">EB</span>
-        <span class="tft-cat-arrow">↗</span>
-      </div>
-      <div class="tft-cat-name">Embedded Systems &amp; IoT</div>
-      <div class="tft-cat-meta">MCUs · Hardware · IoT</div>
-      <p class="tft-cat-desc">Embedded C, board bring-up, device drivers, IoT protocols, microcontrollers, and real embedded workflows.</p>
-    </a>
-
-    <a href="https://techfortalk.co.uk/category/cloud-aws-devops/" class="tft-cat-card">
-      <div class="tft-cat-row">
-        <span class="tft-cat-badge">AWS</span>
-        <span class="tft-cat-arrow">↗</span>
-      </div>
-      <div class="tft-cat-name">Cloud / AWS / DevOps</div>
-      <div class="tft-cat-meta">AWS · ETL · Automation</div>
-      <p class="tft-cat-desc">AWS pipelines, Glue ETL, Lambda automation, monitoring, cloud engineering, and DevOps practices.</p>
-    </a>
-
-    <a href="https://techfortalk.co.uk/category/ai-ml-data-engineering/" class="tft-cat-card">
-      <div class="tft-cat-row">
-        <span class="tft-cat-badge">AI</span>
-        <span class="tft-cat-arrow">↗</span>
-      </div>
-      <div class="tft-cat-name">AI/ML &amp; Data Engineering</div>
-      <div class="tft-cat-meta">Models · NLP · Big Data</div>
-      <p class="tft-cat-desc">Study notes, NLP, ML concepts, training models, GPU compute, Big Data pipelines, and distributed data processing.</p>
-    </a>
-
-    <a href="https://techfortalk.co.uk/category/networking-distributed-systems/" class="tft-cat-card">
-      <div class="tft-cat-row">
-        <span class="tft-cat-badge">NET</span>
-        <span class="tft-cat-arrow">↗</span>
-      </div>
-      <div class="tft-cat-name">Networking &amp; Distributed Systems</div>
-      <div class="tft-cat-meta">Protocols · HPC · Parallel</div>
-      <p class="tft-cat-desc">Routing, distributed computing, MPI, parallel processing, networking fundamentals, and systems communication.</p>
-    </a>
-
-    <a href="https://techfortalk.co.uk/category/big-data/" class="tft-cat-card">
-      <div class="tft-cat-row">
-        <span class="tft-cat-badge">BD</span>
-        <span class="tft-cat-arrow">↗</span>
-      </div>
-      <div class="tft-cat-name">Big Data</div>
-      <div class="tft-cat-meta">Analytics · Hadoop · Streaming</div>
-      <p class="tft-cat-desc">Large-scale data processing, distributed storage, ETL pipelines, batch and streaming architectures, and Hadoop-ecosystem tools.</p>
-    </a>
-
-    <a href="https://techfortalk.co.uk/category/study-notes/" class="tft-cat-card">
-      <div class="tft-cat-row">
-        <span class="tft-cat-badge">SN</span>
-        <span class="tft-cat-arrow">↗</span>
-      </div>
-      <div class="tft-cat-name">Study Notes</div>
-      <div class="tft-cat-meta">Lectures · Summaries · Guides</div>
-      <p class="tft-cat-desc">BITS Pilani WILP notes, cloud computing summaries, AI/ML semester material, and structured study guides for students and engineers.</p>
-    </a>
-
+  <!-- CATEGORIES -->
+  <div class="tft-section-header">
+    <h2>Browse by topic</h2>
   </div>
 
-  <!-- TWO-COLUMN -->
-  <div class="tft-two-col">
-    <div>
-      <ul class="tft-latest-list">
-        <!-- WordPress latest posts widget/PHP renders here -->
-      </ul>
-    </div>
+  <div class="tft-category-grid">
+
+    <a href="https://techfortalk.co.uk/category/live-projects/"
+       class="tft-cat-card tft-cat-card--wide">
+      <span class="tft-cat-path">~/live-projects</span>
+      <span class="tft-cat-name">Live Projects</span>
+      <p class="tft-cat-desc">
+        Real engineering projects documented in real time â€” architecture
+        decisions, code walkthroughs, and lessons learned as they happen.
+      </p>
+    </a>
+
+    <a href="https://techfortalk.co.uk/category/ai-projects/"
+       class="tft-cat-card tft-cat-card--wide">
+      <span class="tft-cat-path">~/ai-projects</span>
+      <span class="tft-cat-name">AI Projects</span>
+      <p class="tft-cat-desc">
+        Practical builds with generative AI, multimodal models, APIs,
+        Python, and end-to-end automation workflows.
+      </p>
+    </a>
+
+    <a href="https://techfortalk.co.uk/category/c-c-programming/"
+       class="tft-cat-card">
+      <span class="tft-cat-path">~/cpp</span>
+      <span class="tft-cat-name">C/C++ Programming</span>
+      <p class="tft-cat-desc">
+        Templates, RAII, memory management, and real-world performance
+        engineering in modern C/C++.
+      </p>
+    </a>
+
+    <a href="https://techfortalk.co.uk/category/cpp26/"
+       class="tft-cat-card">
+      <span class="tft-cat-path">~/cpp26</span>
+      <span class="tft-cat-name">C++26</span>
+      <p class="tft-cat-desc">
+        New C++26 language and library features, explained through practical
+        examples for modern systems programming.
+      </p>
+    </a>
+
+    <a href="https://techfortalk.co.uk/category/linux-kernel-development/"
+       class="tft-cat-card">
+      <span class="tft-cat-path">~/kernel</span>
+      <span class="tft-cat-name">Linux &amp; Kernel Development</span>
+      <p class="tft-cat-desc">
+        Kernel programming, Linux internals, drivers, debugging tools,
+        and low-level systems work.
+      </p>
+    </a>
+
+    <a href="https://techfortalk.co.uk/category/embedded-systems-iot/"
+       class="tft-cat-card">
+      <span class="tft-cat-path">~/embedded</span>
+      <span class="tft-cat-name">Embedded Systems &amp; IoT</span>
+      <p class="tft-cat-desc">
+        Embedded C, board bring-up, device drivers, IoT protocols, and
+        microcontroller workflows.
+      </p>
+    </a>
+
+    <a href="https://techfortalk.co.uk/category/cloud-aws-devops/"
+       class="tft-cat-card">
+      <span class="tft-cat-path">~/cloud</span>
+      <span class="tft-cat-name">Cloud / AWS / DevOps</span>
+      <p class="tft-cat-desc">
+        AWS pipelines, Glue ETL, Lambda automation, monitoring, and
+        DevOps practice.
+      </p>
+    </a>
+
+    <a href="https://techfortalk.co.uk/category/ai-ml-data-engineering/"
+       class="tft-cat-card">
+      <span class="tft-cat-path">~/ml</span>
+      <span class="tft-cat-name">AI/ML &amp; Data Engineering</span>
+      <p class="tft-cat-desc">
+        NLP, model training, GPU compute, Big Data pipelines, and
+        distributed data processing.
+      </p>
+    </a>
+
+    <a href="https://techfortalk.co.uk/category/networking-distributed-systems/"
+       class="tft-cat-card">
+      <span class="tft-cat-path">~/net</span>
+      <span class="tft-cat-name">Networking &amp; Distributed Systems</span>
+      <p class="tft-cat-desc">
+        Routing, MPI, parallel processing, networking fundamentals, and
+        systems communication.
+      </p>
+    </a>
+
+    <a href="https://techfortalk.co.uk/category/big-data/"
+       class="tft-cat-card tft-cat-card--span">
+      <span class="tft-cat-path">~/bigdata</span>
+      <span class="tft-cat-name">Big Data</span>
+      <p class="tft-cat-desc">
+        Large-scale processing, distributed storage, batch and streaming
+        architectures, Hadoop-ecosystem tools.
+      </p>
+    </a>
+
+    <a href="https://techfortalk.co.uk/category/online-books/"
+       class="tft-cat-card tft-cat-card--span">
+      <span class="tft-cat-path">~/books</span>
+      <span class="tft-cat-name">Online Books</span>
+      <p class="tft-cat-desc">
+        Full-length guides published chapter by chapter, starting with
+        "Understanding C++ Templates".
+      </p>
+    </a>
+
+    <a href="https://techfortalk.co.uk/category/study-notes/"
+       class="tft-cat-card tft-cat-card--span">
+      <span class="tft-cat-path">~/notes</span>
+      <span class="tft-cat-name">Study Notes</span>
+      <p class="tft-cat-desc">
+        BITS Pilani WILP notes, cloud computing summaries, and structured
+        study guides for students and engineers.
+      </p>
+    </a>
+
   </div>
 
 </div>
+</div>
 <!-- /wp:html -->
+
