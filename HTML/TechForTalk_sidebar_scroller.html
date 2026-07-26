@@ -1,0 +1,284 @@
+<!-- TECH FOR TALK · THEFOUR SIDEBAR ARTICLE SCROLLER -->
+<style>
+.tft-sidebar-rail,
+.tft-sidebar-rail *,
+.tft-sidebar-rail *::before,
+.tft-sidebar-rail *::after {
+    box-sizing: border-box;
+}
+
+.tft-sidebar-rail {
+    --tft-side-bg: #0C1117;
+    --tft-side-card: #101821;
+    --tft-side-card-hover: #131F2D;
+    --tft-side-line: #233043;
+    --tft-side-text: #DCE6F3;
+    --tft-side-muted: #8FA0B8;
+    --tft-side-accent: #6FA8FF;
+    --tft-side-green: #3DDC97;
+
+    width: 100%;
+    max-width: 100%;
+    height: clamp(440px, 62vh, 620px);
+    overflow: hidden;
+    border: 1px solid var(--tft-side-line);
+    border-radius: 12px;
+    background: rgba(12, 17, 23, 0.98);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+    color: var(--tft-side-text);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", sans-serif;
+}
+
+.tft-sidebar-rail__heading {
+    position: relative;
+    z-index: 3;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 0 15px;
+    border-bottom: 1px solid var(--tft-side-line);
+    background: var(--tft-side-bg);
+    color: #F2F6FB;
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas,
+                 monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.tft-sidebar-rail__heading::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--tft-side-green);
+    box-shadow: 0 0 10px rgba(61, 220, 151, 0.65);
+}
+
+.tft-sidebar-rail__viewport {
+    position: relative;
+    height: calc(100% - 50px);
+    overflow: hidden;
+}
+
+.tft-sidebar-rail__viewport::before,
+.tft-sidebar-rail__viewport::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    left: 0;
+    height: 46px;
+    pointer-events: none;
+}
+
+.tft-sidebar-rail__viewport::before {
+    top: 0;
+    background: linear-gradient(var(--tft-side-bg), transparent);
+}
+
+.tft-sidebar-rail__viewport::after {
+    bottom: 0;
+    background: linear-gradient(transparent, var(--tft-side-bg));
+}
+
+.tft-sidebar-rail__track {
+    animation: tft-sidebar-scroll 44s linear infinite;
+    will-change: transform;
+}
+
+.tft-sidebar-rail__group {
+    display: grid;
+    gap: 10px;
+    padding: 17px 12px 10px;
+}
+
+.tft-sidebar-rail__card {
+    display: block;
+    margin: 0 !important;
+    padding: 13px 12px !important;
+    border: 1px solid var(--tft-side-line) !important;
+    border-radius: 8px;
+    background: var(--tft-side-card);
+    color: var(--tft-side-text) !important;
+    text-align: left !important;
+    text-decoration: none !important;
+    text-transform: none !important;
+    box-shadow: none !important;
+    transition: border-color 180ms ease, background 180ms ease;
+}
+
+.tft-sidebar-rail__card:hover,
+.tft-sidebar-rail__card:focus-visible {
+    border-color: var(--tft-side-accent) !important;
+    background: var(--tft-side-card-hover);
+    outline: none;
+}
+
+.tft-sidebar-rail__meta {
+    display: block;
+    margin: 0 0 6px !important;
+    color: var(--tft-side-accent) !important;
+    font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Consolas,
+                 monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+    text-align: left !important;
+    text-transform: uppercase !important;
+}
+
+.tft-sidebar-rail__title {
+    display: block;
+    margin: 0 !important;
+    color: var(--tft-side-text) !important;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.42;
+    text-align: left !important;
+    text-transform: none !important;
+    overflow-wrap: anywhere;
+}
+
+@keyframes tft-sidebar-scroll {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-50%);
+    }
+}
+
+/* TheFour moves its sidebar below the article on narrower displays.
+   Hide the animation there to avoid a long moving panel after the content. */
+@media (max-width: 900px) {
+    .tft-sidebar-rail {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tft-sidebar-rail {
+        height: auto;
+        max-height: 620px;
+    }
+
+    .tft-sidebar-rail__viewport {
+        height: auto;
+        max-height: 570px;
+        overflow-y: auto;
+    }
+
+    .tft-sidebar-rail__track {
+        animation: none;
+    }
+
+    .tft-sidebar-rail__group[aria-hidden="true"] {
+        display: none;
+    }
+}
+</style>
+
+<aside class="tft-sidebar-rail" aria-label="Latest articles">
+    <div class="tft-sidebar-rail__heading">Latest articles</div>
+
+    <div class="tft-sidebar-rail__viewport">
+        <div class="tft-sidebar-rail__track">
+            <div class="tft-sidebar-rail__group">
+                <a class="tft-sidebar-rail__card"
+                   href="https://techfortalk.co.uk/2026/07/25/c26-what-is-reflection-and-how-to-use-it/"
+                   target="_blank" rel="noopener">
+                    <span class="tft-sidebar-rail__meta">C++26 · 25 Jul 2026</span>
+                    <span class="tft-sidebar-rail__title">C++26: what is reflection and how to use it</span>
+                </a>
+
+                <a class="tft-sidebar-rail__card"
+                   href="https://techfortalk.co.uk/2026/07/20/c26-what-is-template-for/"
+                   target="_blank" rel="noopener">
+                    <span class="tft-sidebar-rail__meta">C++26 · 20 Jul 2026</span>
+                    <span class="tft-sidebar-rail__title">C++26: what is “template for”?</span>
+                </a>
+
+                <a class="tft-sidebar-rail__card"
+                   href="https://techfortalk.co.uk/2026/07/19/https-techfortalk-co-uk-prompting-cpp-for-systems-engineering/"
+                   target="_blank" rel="noopener">
+                    <span class="tft-sidebar-rail__meta">Book · 19 Jul 2026</span>
+                    <span class="tft-sidebar-rail__title">Prompting C++ for Systems Engineering: Book Overview and Full Table of Contents</span>
+                </a>
+
+                <a class="tft-sidebar-rail__card"
+                   href="https://techfortalk.co.uk/2026/07/19/debugging-strategies-for-cpp-engineers/"
+                   target="_blank" rel="noopener">
+                    <span class="tft-sidebar-rail__meta">C++ · 19 Jul 2026</span>
+                    <span class="tft-sidebar-rail__title">Debugging Strategies for C++ Engineers</span>
+                </a>
+
+                <a class="tft-sidebar-rail__card"
+                   href="https://techfortalk.co.uk/2026/06/15/install-stm32cubemx-on-ubuntu-22-04-java-21-issues-explained/"
+                   target="_blank" rel="noopener">
+                    <span class="tft-sidebar-rail__meta">Embedded · 15 Jun 2026</span>
+                    <span class="tft-sidebar-rail__title">Install STM32CubeMX on Ubuntu 22.04: Java 21 Issues Explained</span>
+                </a>
+
+                <a class="tft-sidebar-rail__card"
+                   href="https://techfortalk.co.uk/2026/05/04/compile-your-first-c26-program-with-gcc-16-1/"
+                   target="_blank" rel="noopener">
+                    <span class="tft-sidebar-rail__meta">C++26 · 4 May 2026</span>
+                    <span class="tft-sidebar-rail__title">Compile Your First C++26 Program with GCC 16.1</span>
+                </a>
+            </div>
+
+            <!-- Duplicate group creates a continuous loop. -->
+            <div class="tft-sidebar-rail__group" aria-hidden="true">
+                <a class="tft-sidebar-rail__card"
+                   href="https://techfortalk.co.uk/2026/07/25/c26-what-is-reflection-and-how-to-use-it/"
+                   target="_blank" rel="noopener" tabindex="-1">
+                    <span class="tft-sidebar-rail__meta">C++26 · 25 Jul 2026</span>
+                    <span class="tft-sidebar-rail__title">C++26: what is reflection and how to use it</span>
+                </a>
+
+                <a class="tft-sidebar-rail__card"
+                   href="https://techfortalk.co.uk/2026/07/20/c26-what-is-template-for/"
+                   target="_blank" rel="noopener" tabindex="-1">
+                    <span class="tft-sidebar-rail__meta">C++26 · 20 Jul 2026</span>
+                    <span class="tft-sidebar-rail__title">C++26: what is “template for”?</span>
+                </a>
+
+                <a class="tft-sidebar-rail__card"
+                   href="https://techfortalk.co.uk/2026/07/19/https-techfortalk-co-uk-prompting-cpp-for-systems-engineering/"
+                   target="_blank" rel="noopener" tabindex="-1">
+                    <span class="tft-sidebar-rail__meta">Book · 19 Jul 2026</span>
+                    <span class="tft-sidebar-rail__title">Prompting C++ for Systems Engineering: Book Overview and Full Table of Contents</span>
+                </a>
+
+                <a class="tft-sidebar-rail__card"
+                   href="https://techfortalk.co.uk/2026/07/19/debugging-strategies-for-cpp-engineers/"
+                   target="_blank" rel="noopener" tabindex="-1">
+                    <span class="tft-sidebar-rail__meta">C++ · 19 Jul 2026</span>
+                    <span class="tft-sidebar-rail__title">Debugging Strategies for C++ Engineers</span>
+                </a>
+
+                <a class="tft-sidebar-rail__card"
+                   href="https://techfortalk.co.uk/2026/06/15/install-stm32cubemx-on-ubuntu-22-04-java-21-issues-explained/"
+                   target="_blank" rel="noopener" tabindex="-1">
+                    <span class="tft-sidebar-rail__meta">Embedded · 15 Jun 2026</span>
+                    <span class="tft-sidebar-rail__title">Install STM32CubeMX on Ubuntu 22.04: Java 21 Issues Explained</span>
+                </a>
+
+                <a class="tft-sidebar-rail__card"
+                   href="https://techfortalk.co.uk/2026/05/04/compile-your-first-c26-program-with-gcc-16-1/"
+                   target="_blank" rel="noopener" tabindex="-1">
+                    <span class="tft-sidebar-rail__meta">C++26 · 4 May 2026</span>
+                    <span class="tft-sidebar-rail__title">Compile Your First C++26 Program with GCC 16.1</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</aside>
