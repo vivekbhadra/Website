@@ -729,7 +729,235 @@
   .tft-landing .tft-cat-card--wide,
   .tft-landing .tft-cat-card--span { grid-column: span 1; }
 }
+
+/* ── DESKTOP ARTICLE RAIL ──
+   Uses the otherwise empty left gutter only when enough room is available.
+   It is deliberately hidden on laptops, tablets, and phones. */
+.tft-post-rail {
+  display: none;
+}
+
+@media (min-width: 1600px) and (min-height: 700px) {
+  .tft-post-rail {
+    --tft-rail-bg: rgba(12, 17, 23, 0.96);
+    --tft-rail-line: #233043;
+    --tft-rail-text: #DCE6F3;
+    --tft-rail-muted: #8FA0B8;
+    --tft-rail-accent: #6FA8FF;
+    display: block;
+    position: fixed;
+    z-index: 20;
+    top: clamp(9rem, 16vh, 13rem);
+    left: clamp(1rem, calc((100vw - 1200px) / 4), 3rem);
+    width: clamp(240px, calc((100vw - 1100px) / 2 - 3rem), 330px);
+    height: clamp(360px, calc(100vh - 15rem), 650px);
+    overflow: hidden;
+    border: 1px solid var(--tft-rail-line);
+    border-radius: 12px;
+    background: var(--tft-rail-bg);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    color: var(--tft-rail-text);
+  }
+
+  .tft-post-rail::before,
+  .tft-post-rail::after {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    height: 3.5rem;
+    pointer-events: none;
+  }
+
+  .tft-post-rail::before {
+    top: 3.2rem;
+    background: linear-gradient(var(--tft-rail-bg), transparent);
+  }
+
+  .tft-post-rail::after {
+    bottom: 0;
+    background: linear-gradient(transparent, var(--tft-rail-bg));
+  }
+
+  .tft-post-rail__heading {
+    position: relative;
+    z-index: 3;
+    height: 3.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0 1rem;
+    border-bottom: 1px solid var(--tft-rail-line);
+    background: #0C1117;
+    color: #F2F6FB;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .tft-post-rail__heading::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #3DDC97;
+    box-shadow: 0 0 10px rgba(61, 220, 151, 0.65);
+  }
+
+  .tft-post-rail__viewport {
+    height: calc(100% - 3.2rem);
+    overflow: hidden;
+  }
+
+  .tft-post-rail__track {
+    animation: tft-post-scroll 42s linear infinite;
+    will-change: transform;
+  }
+
+  .tft-post-rail__group {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1.2rem 0.85rem 0.75rem;
+  }
+
+  .tft-post-rail__card {
+    display: block;
+    padding: 0.9rem;
+    border: 1px solid var(--tft-rail-line) !important;
+    border-radius: 8px;
+    background: #101821;
+    color: var(--tft-rail-text) !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    transition: border-color 180ms ease, background 180ms ease,
+                transform 180ms ease;
+  }
+
+  .tft-post-rail__card:hover,
+  .tft-post-rail__card:focus-visible {
+    border-color: var(--tft-rail-accent) !important;
+    background: #131F2D;
+    transform: translateX(3px);
+    outline: none;
+  }
+
+  .tft-post-rail__meta {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--tft-rail-accent);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+  }
+
+  .tft-post-rail__title {
+    display: block;
+    color: var(--tft-rail-text);
+    font-size: 0.88rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+}
+
+@keyframes tft-post-scroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tft-post-rail__viewport {
+    overflow-y: auto;
+  }
+
+  .tft-post-rail__track {
+    animation: none !important;
+  }
+
+  .tft-post-rail__group[aria-hidden='true'] {
+    display: none;
+  }
+}
 </style>
+
+<!-- DESKTOP-ONLY, AUTO-SCROLLING LATEST ARTICLES -->
+<aside class="tft-post-rail" aria-label="Latest articles">
+  <div class="tft-post-rail__heading">Latest articles</div>
+  <div class="tft-post-rail__viewport">
+    <div class="tft-post-rail__track">
+      <div class="tft-post-rail__group">
+        <a class="tft-post-rail__card" target="_blank" rel="noopener"
+           href="https://techfortalk.co.uk/2026/07/25/c26-what-is-reflection-and-how-to-use-it/">
+          <span class="tft-post-rail__meta">C++26 · 25 Jul 2026</span>
+          <span class="tft-post-rail__title">C++26: what is reflection and how to use it</span>
+        </a>
+        <a class="tft-post-rail__card" target="_blank" rel="noopener"
+           href="https://techfortalk.co.uk/2026/07/20/c26-what-is-template-for/">
+          <span class="tft-post-rail__meta">C++26 · 20 Jul 2026</span>
+          <span class="tft-post-rail__title">C++26: what is “template for”?</span>
+        </a>
+        <a class="tft-post-rail__card" target="_blank" rel="noopener"
+           href="https://techfortalk.co.uk/2026/07/19/https-techfortalk-co-uk-prompting-cpp-for-systems-engineering/">
+          <span class="tft-post-rail__meta">BOOK · 19 Jul 2026</span>
+          <span class="tft-post-rail__title">Prompting C++ for Systems Engineering: Book Overview and Full Table of Contents</span>
+        </a>
+        <a class="tft-post-rail__card" target="_blank" rel="noopener"
+           href="https://techfortalk.co.uk/2026/07/19/debugging-strategies-for-cpp-engineers/">
+          <span class="tft-post-rail__meta">C++ · 19 Jul 2026</span>
+          <span class="tft-post-rail__title">Debugging Strategies for C++ Engineers</span>
+        </a>
+        <a class="tft-post-rail__card" target="_blank" rel="noopener"
+           href="https://techfortalk.co.uk/2026/06/15/install-stm32cubemx-on-ubuntu-22-04-java-21-issues-explained/">
+          <span class="tft-post-rail__meta">EMBEDDED · 15 Jun 2026</span>
+          <span class="tft-post-rail__title">Install STM32CubeMX on Ubuntu 22.04: Java 21 Issues Explained</span>
+        </a>
+        <a class="tft-post-rail__card" target="_blank" rel="noopener"
+           href="https://techfortalk.co.uk/2026/05/04/compile-your-first-c26-program-with-gcc-16-1/">
+          <span class="tft-post-rail__meta">C++26 · 4 May 2026</span>
+          <span class="tft-post-rail__title">Compile Your First C++26 Program with GCC 16.1</span>
+        </a>
+      </div>
+
+      <!-- Duplicate group creates a seamless loop. Hidden from screen readers. -->
+      <div class="tft-post-rail__group" aria-hidden="true">
+        <a class="tft-post-rail__card" tabindex="-1" target="_blank" rel="noopener"
+           href="https://techfortalk.co.uk/2026/07/25/c26-what-is-reflection-and-how-to-use-it/">
+          <span class="tft-post-rail__meta">C++26 · 25 Jul 2026</span>
+          <span class="tft-post-rail__title">C++26: what is reflection and how to use it</span>
+        </a>
+        <a class="tft-post-rail__card" tabindex="-1" target="_blank" rel="noopener"
+           href="https://techfortalk.co.uk/2026/07/20/c26-what-is-template-for/">
+          <span class="tft-post-rail__meta">C++26 · 20 Jul 2026</span>
+          <span class="tft-post-rail__title">C++26: what is “template for”?</span>
+        </a>
+        <a class="tft-post-rail__card" tabindex="-1" target="_blank" rel="noopener"
+           href="https://techfortalk.co.uk/2026/07/19/https-techfortalk-co-uk-prompting-cpp-for-systems-engineering/">
+          <span class="tft-post-rail__meta">BOOK · 19 Jul 2026</span>
+          <span class="tft-post-rail__title">Prompting C++ for Systems Engineering: Book Overview and Full Table of Contents</span>
+        </a>
+        <a class="tft-post-rail__card" tabindex="-1" target="_blank" rel="noopener"
+           href="https://techfortalk.co.uk/2026/07/19/debugging-strategies-for-cpp-engineers/">
+          <span class="tft-post-rail__meta">C++ · 19 Jul 2026</span>
+          <span class="tft-post-rail__title">Debugging Strategies for C++ Engineers</span>
+        </a>
+        <a class="tft-post-rail__card" tabindex="-1" target="_blank" rel="noopener"
+           href="https://techfortalk.co.uk/2026/06/15/install-stm32cubemx-on-ubuntu-22-04-java-21-issues-explained/">
+          <span class="tft-post-rail__meta">EMBEDDED · 15 Jun 2026</span>
+          <span class="tft-post-rail__title">Install STM32CubeMX on Ubuntu 22.04: Java 21 Issues Explained</span>
+        </a>
+        <a class="tft-post-rail__card" tabindex="-1" target="_blank" rel="noopener"
+           href="https://techfortalk.co.uk/2026/05/04/compile-your-first-c26-program-with-gcc-16-1/">
+          <span class="tft-post-rail__meta">C++26 · 4 May 2026</span>
+          <span class="tft-post-rail__title">Compile Your First C++26 Program with GCC 16.1</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</aside>
 
 <div class="tft-landing tft-page-shell">
 <div class="tft-wrap tft-page-inner">
@@ -793,10 +1021,15 @@
         An in-depth book covering the most important areas of modern C++ and systems engineering, including STL, multithreading, debugging, testing, prompt engineering, and practical ways to leverage AI. It also presents real-world debugging techniques and professional insights drawn from extensive C++ development experience. Includes the full table of contents and regional purchase links.
       </p>
     </div>
-    <img class="tft-book-cover"
-         src="https://techfortalk.co.uk/wp-content/uploads/2026/07/Prompting_CPP_thumbnail.png"
-         alt="Cover of Prompting C++ for Systems Engineering by Vivek Bhadra"
-         width="300" height="450" loading="lazy" decoding="async" />
+<img
+     class="book-section-cover"
+     src="https://techfortalk.co.uk/wp-content/uploads/2026/07/prompting-cpp-front-back-revolving.gif"
+     alt="Animated front and back covers of Prompting C++ for Systems Engineering by Vivek Bhadra"
+     width="300"
+     height="340"
+     loading="lazy"
+     decoding="async"
+/>
     <span class="tft-book-cta">view book →</span>
   </a>
 
@@ -807,7 +1040,7 @@
     <div class="tft-book-spine"><span>Training</span></div>
     <div class="tft-book-body">
       <div class="tft-book-kicker">Professional training · 1-to-1 and small groups</div>
-      <h2>Professional C++ and Embedded Software Training</h2>
+      <h2>Professional Training & Services</h2>
       <p>
         Hands-on professional training in C++ for finance, embedded systems development, Linux kernel development, device drivers from scratch, STM32 bootloader development, secure bootloaders, and bare-metal programming — taught by a published C++ author with 24+ years of industry experience.
       </p>
