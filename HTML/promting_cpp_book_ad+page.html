@@ -1,0 +1,2390 @@
+<!-- wp:html -->
+<!--
+Recommended WordPress page title:
+Prompting C++ for Systems Engineering | Modern C++, AI, Debugging and Testing
+-->
+<style>
+/* ─────────────────────────────────────────────
+   TECHFORTALK · BOOK PAGE
+   matches landing: ink #0E1726 · paper #F7F9FB
+   accent #2050F5 · terminal #0C1117
+   ───────────────────────────────────────────── */
+
+.tfb *,
+.tfb *::before,
+.tfb *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.tfb {
+  --ink: #0E1726;
+  --ink-soft: #46536B;
+  --ink-faint: #7C879C;
+  --paper: #F7F9FB;
+  --line: #DDE3EC;
+  --accent: #2050F5;
+  --accent-dim: #E8EDFE;
+  --term: #0C1117;
+  --term-line: #1C2530;
+  --green: #1BAA6F;
+
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1rem, 4vw, 2rem) 5rem;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  float: none;
+  clear: both;
+}
+
+/* ── HERO ── */
+.tfb-hero {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  align-items: start;
+  margin-bottom: 3.5rem;
+}
+
+.tfb-covers {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-width: 0;
+}
+
+.tfb-cover {
+  display: block;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(14, 23, 38, 0.14);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tfb-cover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 38px rgba(14, 23, 38, 0.18);
+}
+
+.tfb-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tfb-kicker {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+}
+
+.tfb-hero h1 {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.9rem;
+}
+
+.tfb-tagline {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--ink-soft);
+  max-width: 60ch;
+  margin-bottom: 1.4rem;
+}
+
+/* Meta table */
+.tfb-meta {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1.2rem;
+  font-size: 0.86rem;
+  margin-bottom: 1.6rem;
+}
+
+.tfb-meta dt {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding-top: 0.15rem;
+}
+
+.tfb-meta dd {
+  color: var(--ink-soft);
+}
+
+/* Buy buttons */
+.tfb-buy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.7rem;
+}
+
+.tfb-btn {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--accent);
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.tfb-btn--primary {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+.tfb-btn--primary:hover {
+  background: #1740D6;
+  border-color: #1740D6;
+  transform: translateY(-1px);
+  color: #FFFFFF;
+}
+
+.tfb-btn--ghost {
+  background: transparent;
+  color: var(--accent);
+}
+
+.tfb-btn--ghost:hover {
+  background: var(--accent-dim);
+  transform: translateY(-1px);
+}
+
+.tfb a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.tfb-buy-note {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+/* ── SECTION HEADERS ── */
+.tfb-section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin: 3rem 0 0.8rem;
+}
+
+.tfb-section-header h2 {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.tfb-section-header .tfb-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+  align-self: center;
+}
+
+.tfb-section-intro {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  max-width: 75ch;
+  margin-bottom: 1.4rem;
+}
+
+/* ── SOURCE CODE REPOSITORY ── */
+.tfb-source-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.2rem;
+  align-items: start;
+  padding: 1.4rem;
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(14, 23, 38, 0.06);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+              transform 0.15s ease;
+}
+
+.tfb-source-card:hover {
+  border-color: #B9C6DA;
+  box-shadow: 0 8px 22px rgba(14, 23, 38, 0.1);
+  transform: translateY(-2px);
+}
+
+.tfb-source-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 8px;
+  background: var(--term);
+  color: #FFFFFF;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tfb-source-label {
+  margin-bottom: 0.3rem;
+  color: var(--accent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.tfb-source-content h3 {
+  margin-bottom: 0.55rem;
+  color: var(--ink);
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.08rem;
+  line-height: 1.3;
+}
+
+.tfb-source-content p:not(.tfb-source-label) {
+  max-width: 70ch;
+  margin-bottom: 1rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+/* ── TABLE OF CONTENTS ── */
+.tfb-toc details {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+  transition: border-color 0.15s ease;
+}
+
+.tfb-toc details:hover {
+  border-color: #B9C6DA;
+}
+
+.tfb-toc details[open] {
+  border-color: var(--accent);
+}
+
+.tfb-toc summary {
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  padding: 0.95rem 1.15rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  list-style: none;
+  user-select: none;
+}
+
+.tfb-toc summary::-webkit-details-marker { display: none; }
+
+.tfb-ch {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  flex: 0 0 auto;
+}
+
+.tfb-toc summary::after {
+  content: '+';
+  margin-left: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1rem;
+  color: var(--ink-faint);
+  transition: transform 0.15s ease;
+}
+
+.tfb-toc details[open] summary::after {
+  content: '–';
+  color: var(--accent);
+}
+
+.tfb-toc details[open] summary {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.tfb-toc details > ul {
+  padding: 1.1rem 1.4rem 1.3rem 2.6rem;
+  font-size: 0.87rem;
+  color: var(--ink-soft);
+}
+
+.tfb-toc ul { list-style: none; }
+
+.tfb-toc details > ul > li {
+  padding: 0.22rem 0;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.tfb-toc details > ul > li::before {
+  content: '§ ';
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+.tfb-toc ul ul {
+  margin: 0.25rem 0 0.35rem;
+  padding-left: 1.3rem;
+  font-weight: 400;
+  color: var(--ink-soft);
+  border-left: 1px solid var(--line);
+}
+
+.tfb-toc ul ul li {
+  padding: 0.14rem 0;
+  font-weight: 400;
+}
+
+.tfb-toc ul ul li::before { content: none; }
+
+.tfb-toc ul ul ul {
+  font-size: 0.83rem;
+  color: var(--ink-faint);
+}
+
+/* ── PROSE SECTIONS ── */
+.tfb-prose p {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  max-width: 75ch;
+  margin-bottom: 0.9rem;
+}
+
+.tfb-prose strong { color: var(--ink); }
+
+/* ── FAQ ── */
+.tfb-faq details {
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+}
+
+.tfb-faq details[open] { border-color: var(--accent); }
+
+.tfb-faq summary {
+  cursor: pointer;
+  padding: 0.9rem 1.15rem;
+  font-weight: 600;
+  font-size: 0.93rem;
+  list-style: none;
+  display: flex;
+  gap: 0.75rem;
+  align-items: baseline;
+  user-select: none;
+}
+
+.tfb-faq summary::-webkit-details-marker { display: none; }
+
+.tfb-faq summary::before {
+  content: '?';
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  flex: 0 0 auto;
+}
+
+.tfb-faq details p {
+  padding: 0 1.15rem 1rem 2.4rem;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.tfb-faq code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82em;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.05em 0.35em;
+}
+
+/* ── PURCHASE PANEL ── */
+.tfb-purchase-panel {
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  background: #FFFFFF;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--accent);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(14, 23, 38, 0.08);
+}
+
+.tfb-purchase-panel h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.tfb-purchase-panel > p {
+  margin: 0 0 1rem;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.tfb-direct-offer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #FFF7DD, #FFFDF6);
+  border: 1px solid #E9B949;
+  border-left: 5px solid #F59E0B;
+  border-radius: 10px;
+}
+
+.tfb-direct-offer strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--ink);
+}
+
+.tfb-direct-offer p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+}
+
+.tfb-offer-code {
+  display: inline-block;
+  margin: 0 0.2rem;
+  padding: 0.05rem 0.38rem;
+  color: var(--ink);
+  background: #FFFFFF;
+  border: 1px dashed #C77800;
+  border-radius: 4px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 700;
+}
+
+.tfb-offer-badge {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  padding: 0.18rem 0.52rem;
+  color: #7A4100;
+  background: #FFE7A3;
+  border-radius: 999px;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tfb-signup-offer {
+  margin: 0.8rem 0 0;
+  padding: 0.75rem 0.9rem;
+  color: var(--ink-soft);
+  background: var(--paper);
+  border-radius: 8px;
+  font-size: 0.84rem;
+}
+
+.tfb-signup-offer a {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.tfb-market-label {
+  margin: 1rem 0 0.55rem;
+  color: var(--ink-faint);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tfb-buy--markets {
+  margin-bottom: 0;
+}
+
+.tfb-buy--markets .tfb-btn {
+  padding: 0.58rem 0.95rem;
+  font-size: 0.82rem;
+}
+
+.tfb-preview-action {
+  display: flex;
+  justify-content: flex-start;
+  margin: 2.5rem 0 0;
+}
+
+/* Conversion-focused visual order without duplicating the full contents. */
+.tfb-hero { order: 1; }
+.tfb-purchase-panel { order: 2; }
+.tfb-preview-action { order: 3; }
+.tfb-toc-heading { order: 4; }
+.tfb-toc-intro { order: 5; }
+.tfb-toc { order: 6; }
+.tfb-source-heading { order: 7; }
+.tfb-source-card { order: 8; }
+.tfb-faq-heading { order: 9; }
+.tfb-faq { order: 10; }
+.tfb-audience-heading { order: 11; }
+.tfb-audience { order: 12; }
+.tfb-author-heading { order: 13; }
+.tfb-author { order: 14; }
+.tfb-final-buy { order: 15; margin-top: 2.5rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 760px) {
+  .tfb-hero {
+    grid-template-columns: 1fr;
+  }
+  .tfb-covers {
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+  .tfb-cover {
+    width: 100%;
+  }
+  .tfb-hero h1 { text-align: left; }
+  .tfb-toc details > ul { padding-left: 1.4rem; }
+  .tfb-direct-offer { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .tfb-buy { flex-direction: column; }
+  .tfb-btn { text-align: center; }
+  .tfb-source-card { grid-template-columns: 1fr; }
+  .tfb-source-icon { width: 2.8rem; height: 2.8rem; }
+  .tfb-source-content .tfb-btn { display: block; }
+}
+</style>
+
+<div class="tfb">
+
+  <!-- HERO -->
+  <section class="tfb-hero">
+    <div class="tfb-covers">
+      <a href="https://techfortalk.co.uk/wp-content/uploads/2026/07/book_front_cover.png" class="tfb-cover">
+        <img src="https://techfortalk.co.uk/wp-content/uploads/2026/07/book_front_cover.png"
+             alt="Front cover of Prompting C++ for Systems Engineering by Vivek Bhadra"
+             width="660" height="773" fetchpriority="high" decoding="async" />
+      </a>
+
+      <a href="https://techfortalk.co.uk/wp-content/uploads/2026/07/Prompting_CPP_back_cover.png" class="tfb-cover">
+        <img src="https://techfortalk.co.uk/wp-content/uploads/2026/07/Prompting_CPP_back_cover.png"
+             alt="Back cover of Prompting C++ for Systems Engineering by Vivek Bhadra"
+             width="660" height="773" loading="lazy" decoding="async" />
+      </a>
+    </div>
+
+    <div>
+      <div class="tfb-kicker">Published book · AVA</div>
+
+      <h1>Prompting C++ for Systems Engineering</h1>
+
+      <p class="tfb-tagline">
+        Learn modern C++ from fundamentals to production-focused systems
+        development through practical examples, professional tools, real-world
+        projects, and responsible AI-assisted programming.
+      </p>
+
+      <dl class="tfb-meta">
+        <dt>Author</dt><dd>Vivek Bhadra</dd>
+        <dt>Publisher</dt><dd>AVA</dd>
+        <dt>Format</dt><dd>Paperback and eBook</dd>
+        <dt>Length</dt><dd>524 pages</dd>
+        <dt>Language</dt><dd>English</dd>
+      </dl>
+
+      <div class="tfb-buy">
+        <a class="tfb-btn tfb-btn--primary"
+           href="https://orangeava.com/products/prompting-c-for-systems-engineering"
+           target="_blank" rel="noopener noreferrer">Buy direct from AVA</a>
+        <a class="tfb-btn tfb-btn--ghost"
+           href="https://www.amazon.com/dp/8169646170"
+           target="_blank" rel="noopener">Buy on Amazon USA</a>
+        <a class="tfb-btn tfb-btn--ghost"
+           href="https://www.amazon.in/dp/8169646170"
+           target="_blank" rel="noopener">Buy on Amazon India</a>
+        <a class="tfb-btn tfb-btn--ghost" href="#purchase-options">
+          All purchase options
+        </a>
+      </div>
+
+      <p class="tfb-buy-note">
+        Direct publisher discounts do not apply to purchases made through
+        Amazon.
+      </p>
+    </div>
+  </section>
+
+  <!-- PURCHASE OPTIONS -->
+  <section class="tfb-purchase-panel" id="purchase-options"
+           aria-labelledby="tfb-purchase-heading">
+    <h2 id="tfb-purchase-heading">Choose where to buy</h2>
+    <p>
+      Buy directly from the publisher or select the Amazon marketplace most
+      appropriate for your location.
+    </p>
+
+    <div class="tfb-direct-offer" id="tfb-refresh-offer">
+      <div>
+        <span class="tfb-offer-badge">Limited offer</span>
+        <strong>Save 25% until 31 July 2026</strong>
+        <p>
+          Use code <span class="tfb-offer-code">REFRESH25</span> at
+          checkout when purchasing directly from Orange AVA.
+        </p>
+      </div>
+      <a class="tfb-btn tfb-btn--primary"
+         href="https://orangeava.com/products/prompting-c-for-systems-engineering"
+         target="_blank" rel="noopener noreferrer">
+        Buy direct and save 25%
+      </a>
+    </div>
+
+    <p class="tfb-signup-offer">
+      <a href="https://orangeava.com/"
+         target="_blank" rel="noopener noreferrer">
+        Sign up with Orange AVA
+      </a>
+      and get a 15% flat discount code for eBooks and paperbacks.
+      Discounts cannot be combined and do not apply to Amazon purchases.
+    </p>
+
+    <div class="tfb-market-label">Amazon marketplaces</div>
+    <div class="tfb-buy tfb-buy--markets">
+      <a class="tfb-btn tfb-btn--ghost"
+         href="https://www.amazon.com/dp/8169646170"
+         target="_blank" rel="noopener noreferrer">USA</a>
+      <a class="tfb-btn tfb-btn--ghost"
+         href="https://www.amazon.in/dp/8169646170"
+         target="_blank" rel="noopener noreferrer">India</a>
+      <a class="tfb-btn tfb-btn--ghost"
+         href="https://www.amazon.co.uk/dp/8169646170"
+         target="_blank" rel="noopener noreferrer">United Kingdom</a>
+      <a class="tfb-btn tfb-btn--ghost"
+         href="https://www.amazon.de/dp/8169646170"
+         target="_blank" rel="noopener noreferrer">Germany</a>
+      <a class="tfb-btn tfb-btn--ghost"
+         href="https://www.amazon.es/dp/8169646170"
+         target="_blank" rel="noopener noreferrer">Spain</a>
+      <a class="tfb-btn tfb-btn--ghost"
+         href="https://www.amazon.com/dp/8169646170"
+         target="_blank" rel="noopener noreferrer">International</a>
+    </div>
+
+    <p class="tfb-buy-note">
+      The International option opens the Amazon USA listing for readers
+      outside the marketplaces shown above. Availability, format, pricing and
+      delivery vary by country, and the book may also be available through
+      other regional Amazon stores.
+    </p>
+  </section>
+
+  <!-- FREE PUBLISHER PREVIEW -->
+  <div class="tfb-preview-action">
+    <a class="tfb-btn tfb-btn--primary"
+       href="https://drive.google.com/file/d/1WiFH25kS-7yxcT2wT6kqPgW7Y46mrxvR/view?usp=sharing"
+       target="_blank" rel="noopener noreferrer">
+      Read the publisher's free preview
+    </a>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="tfb-section-header tfb-toc-heading">
+    <h2>Table of Contents</h2>
+    <span class="tfb-rule"></span>
+  </div>
+
+  <p class="tfb-section-intro tfb-toc-intro">
+    Explore the complete chapter-by-chapter contents. The book progresses
+    from C++ fundamentals and development-environment setup to
+    object-oriented programming, memory management, templates, the Standard
+    Template Library, multithreading, debugging, testing, refactoring, and
+    responsible AI-assisted software development.
+  </p>
+
+  <div class="tfb-toc">
+    <details>
+      <summary><span class="tfb-ch">CH 01</span>Getting Started With C++ and AI Tools</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>Risks of Using AI in C++ Development
+          <ul>
+            <li>Benefits and Responsible Use of AI Tools</li>
+            <li>Striking the Balance: Using AI as an Ally, Not a Crutch</li>
+          </ul>
+        </li>
+        <li>Setting up the Development Environment
+          <ul>
+            <li>Compiler and Build System
+              <ul>
+                <li>macOS (Using Homebrew)</li>
+                <li>Windows (MinGW and CMake)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Visual Studio Code + GitHub Copilot
+          <ul>
+            <li>Installing VS Code on Ubuntu 22.04</li>
+            <li>Step 1: Prepare Your System</li>
+            <li>Step 2: Import Microsoft&rsquo;s GPG Key</li>
+            <li>Step 3: Add the VS Code Repository</li>
+            <li>Step 4: Update and Install VS Code</li>
+            <li>Setting up GitHub Copilot</li>
+            <li>For Existing GitHub Users</li>
+            <li>Troubleshooting: Copilot Setup Stuck on &ldquo;Getting Copilot Ready&hellip;&rdquo;</li>
+            <li>Restart and Retry</li>
+            <li>Other Troubleshooting Steps</li>
+            <li>New to GitHub? Create an Account First</li>
+          </ul>
+        </li>
+        <li>Introducing AI Tools for Development
+          <ul>
+            <li>GitHub Copilot</li>
+            <li>ChatGPT (OpenAI)</li>
+            <li>Amazon Q Developer</li>
+            <li>Installing the C/C++ Extension Manually in VS Code</li>
+          </ul>
+        </li>
+        <li>Writing Your First C++ Program
+          <ul>
+            <li>Prerequisites</li>
+            <li>Create Your Project
+              <ul>
+                <li>Understanding a Project in VS Code</li>
+              </ul>
+            </li>
+            <li>Creating a C++ File</li>
+            <li>Compiling and Running
+              <ul>
+                <li>Method 1: Compiling Using the Command Line</li>
+                <li>Method 2: Compile and Run from inside VS Code</li>
+              </ul>
+            </li>
+            <li>Sample Output</li>
+            <li>Sample task.json</li>
+            <li>Setting up Clang-Format in VSCode
+              <ul>
+                <li>Step 1: Install the Clang-Format Extension in VS Code</li>
+                <li>Step 2: Install Clang-Format on Your System</li>
+                <li>Step 3: Add the Formatting Configuration File</li>
+                <li>Step 4: Enable Clang-Format in the Project Workspace</li>
+                <li>Step 5: Test the Setup</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Generating the Same Code with AI Tools
+          <ul>
+            <li>Using GitHub Copilot in VS Code
+              <ul>
+                <li>Early Observations with GitHub Copilot</li>
+              </ul>
+            </li>
+            <li>Using ChatGPT outside VS Code
+              <ul>
+                <li>Getting Started with ChatGPT</li>
+                <li>Early Observations with ChatGPT</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Reflection: Human versus AI &ndash; A First Look</li>
+        <li>Best Practices Moving Forward</li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 02</span>Understanding C++ Basics</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>Primitive Data Types and Modifiers in C++
+          <ul>
+            <li>Size of Primitive Data Types</li>
+            <li>Fixed-Width Integer Types</li>
+          </ul>
+        </li>
+        <li>Type Modifiers and Qualifiers
+          <ul>
+            <li>Type Modifiers</li>
+            <li>Type Qualifiers
+              <ul>
+                <li>The const Type Qualifier</li>
+                <li>The Volatile Type Qualifier</li>
+                <li>Implications of Omitting the Volatile Qualifier</li>
+                <li>Effect of Applying the Volatile Qualifier</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Storage Class Specifiers in C++
+          <ul>
+            <li>Auto</li>
+            <li>Static</li>
+            <li>Extern</li>
+          </ul>
+        </li>
+        <li>Variable Declaration and Definition
+          <ul>
+            <li>Declaration</li>
+            <li>Definition</li>
+          </ul>
+        </li>
+        <li>Variable Initialization Styles
+          <ul>
+            <li>Copy Initialization
+              <ul>
+                <li>Narrowing Conversions</li>
+              </ul>
+            </li>
+            <li>Direct Initialization</li>
+            <li>Uniform Initialization (Brace Initialization)</li>
+            <li>Comparing C++ Initialization Methods</li>
+          </ul>
+        </li>
+        <li>Type Conversions and Compiler Warnings
+          <ul>
+            <li>Prompting AI for Insight</li>
+          </ul>
+        </li>
+        <li>Memory Layout: Stack versus Heap
+          <ul>
+            <li>Stack Memory</li>
+            <li>Understanding Stack Overflow
+              <ul>
+                <li>Deep or Infinite Recursion</li>
+                <li>Large Local Allocations</li>
+                <li>The Reason behind Stack Size Limitations</li>
+                <li>How to Avoid Stack Overflow</li>
+              </ul>
+            </li>
+            <li>Heap Memory
+              <ul>
+                <li>Understanding Memory Leaks</li>
+                <li>Stack versus Heap Memory in Action</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Variable Scope and Lifetime
+          <ul>
+            <li>Local Scope</li>
+            <li>Global Scope
+              <ul>
+                <li>Understanding the Translation Unit</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Compilation Pipeline: Source to Executable
+          <ul>
+            <li>Overview of the Pipeline</li>
+            <li>Preprocessing</li>
+            <li>Compilation</li>
+            <li>Assembling</li>
+            <li>Linking</li>
+            <li>Case Study: Resolving a Linker Error</li>
+            <li>Using AI Tools for Compilation Insights</li>
+          </ul>
+        </li>
+        <li>AI-Assisted Debugging
+          <ul>
+            <li>Overview of AI-Assisted Debugging</li>
+            <li>Interpreting Compiler Errors with AI</li>
+            <li>Resolving Syntax Errors with AI</li>
+            <li>Diagnosing Linker Errors with AI</li>
+            <li>Case Study: Debugging with AI</li>
+            <li>Crafting Effective AI Prompts</li>
+          </ul>
+        </li>
+        <li>Mini-Project: Memory Explorer
+          <ul>
+            <li>Overview of the Memory Explorer
+              <ul>
+                <li>Implementation</li>
+                <li>Using ChatGPT to Understand the Program</li>
+              </ul>
+            </li>
+            <li>Case Study: Optimizing Variable Types</li>
+            <li>Extending the Memory Explorer</li>
+          </ul>
+        </li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 03</span>Control Flow and Logical Thinking</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>Conditional Statements
+          <ul>
+            <li>The if Statement</li>
+            <li>The if-else and else-if</li>
+            <li>Relational Operators</li>
+            <li>Logical Operators in Conditions
+              <ul>
+                <li>Logical Operators in C++</li>
+                <li>Understanding the Compound Logical Expression</li>
+                <li>Short-Circuit Evaluation</li>
+                <li>Common Pitfalls</li>
+              </ul>
+            </li>
+            <li>The switch Statement
+              <ul>
+                <li>Syntax and Usage</li>
+                <li>Best Practice: Use a Break to Prevent Fall-through</li>
+                <li>Intentional Fall-through</li>
+                <li>Making Intentional Fall-through Explicit with [[fallthrough]]</li>
+              </ul>
+            </li>
+            <li>AI-Assisted Learning
+              <ul>
+                <li>Generating Conditional Logic Using ChatGPT Prompt</li>
+                <li>Generating Conditional Logic Using Copilot in VS Code</li>
+                <li>Sample Copilot Output</li>
+                <li>Prompting Copilot to Create a Switch-Case Menu</li>
+                <li>Observations and Improvements</li>
+                <li>Prompting ChatGPT to Generate a Switch-Case Menu</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Loops and Iteration
+          <ul>
+            <li>The for Loop</li>
+            <li>The while Loop</li>
+            <li>The do-while Loop</li>
+            <li>Breaking and Continuing Loops
+              <ul>
+                <li>The break Statement</li>
+                <li>The continue Statement</li>
+                <li>Prompting ChatGPT to Practice Break and Continue</li>
+              </ul>
+            </li>
+            <li>Avoiding Common Pitfalls in Loop Control
+              <ul>
+                <li>Infinite Loops</li>
+                <li>Off-by-One Errors</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Visualizing Code Flow
+          <ul>
+            <li>Visualizing Code Execution with Dry Run Tables</li>
+            <li>Visualizing Code Flow with Flowcharts
+              <ul>
+                <li>Benefits of Using Flowcharts</li>
+                <li>Common Flowchart Symbols</li>
+                <li>From Code to Flowchart</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Case Study: Human versus AI: A Number Guessing Game
+          <ul>
+            <li>Human Approach: Designing Step-by-Step</li>
+            <li>AI Approach
+              <ul>
+                <li>Generating Code with GitHub Copilot</li>
+              </ul>
+            </li>
+            <li>AI Take Away</li>
+          </ul>
+        </li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 04</span>Functions, Scope, and Modularization</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>Function Declaration, Definition, and Invocation
+          <ul>
+            <li>Parts of a Function</li>
+            <li>Function Forward Declaration</li>
+            <li>Syntax of a Forward Declaration</li>
+            <li>Difference between Definition and Declaration</li>
+            <li>Function Declarations in Header Files</li>
+            <li>Using Include Guards in Header Files</li>
+            <li>Compiling and Running the Multi-File C++ Project in VS Code</li>
+            <li>Purpose of Function Declarations</li>
+            <li>Function Definition</li>
+            <li>Function Invocation</li>
+          </ul>
+        </li>
+        <li>Using Function Return Values Effectively
+          <ul>
+            <li>Basic Usage of Return Values</li>
+            <li>Enforcing Attention to Return Values with [[nodiscard]]</li>
+          </ul>
+        </li>
+        <li>Parameter Passing: By Value, by Reference, by Pointer
+          <ul>
+            <li>Pass by Value</li>
+            <li>Pass by Reference
+              <ul>
+                <li>Mechanism of Pass-by-Reference</li>
+              </ul>
+            </li>
+            <li>Pass by Pointer</li>
+            <li>Comparison</li>
+            <li>Array-to-Pointer Decay in Function Parameters</li>
+            <li>Best Practice</li>
+          </ul>
+        </li>
+        <li>Function Overloading and Default Arguments
+          <ul>
+            <li>Function Overloading
+              <ul>
+                <li>Function Overloading and Function Arguments</li>
+                <li>Name Mangling in Function Overloading</li>
+                <li>Function Overloading and Polymorphism</li>
+              </ul>
+            </li>
+            <li>Default Arguments
+              <ul>
+                <li>Best Practice</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Inline Functions and Recursion
+          <ul>
+            <li>Inline Functions
+              <ul>
+                <li>Function Call Overhead</li>
+              </ul>
+            </li>
+            <li>Recursion</li>
+          </ul>
+        </li>
+        <li>Stack Frame Behavior and Call Tracing
+          <ul>
+            <li>Prerequisites</li>
+            <li>Example Debug Session: Stack Frame Trace</li>
+          </ul>
+        </li>
+        <li>Code Modularity and Logical Decomposition
+          <ul>
+            <li>Non-Modular Approach</li>
+            <li>Modular Approach</li>
+          </ul>
+        </li>
+        <li>Understanding Recursive Functions Using AI
+          <ul>
+            <li>How AI Tools Can Help</li>
+          </ul>
+        </li>
+        <li>Project: Menu-Driven Unit Converter
+          <ul>
+            <li>Project Requirements</li>
+            <li>Explanation of the Unit Converter Program</li>
+          </ul>
+        </li>
+        <li>Using AI Tools to Analyze, Refactor, and Debug the Code
+          <ul>
+            <li>Analyzing and Refactoring Code with AI Tools</li>
+          </ul>
+        </li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 05</span>Arrays, Strings, and STL Vectors</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>Understanding C-Style Arrays
+          <ul>
+            <li>Memory Layout</li>
+          </ul>
+        </li>
+        <li>Concept of Arrays and Indexing
+          <ul>
+            <li>Declaring, Initializing, and Using Arrays
+              <ul>
+                <li>Syntax to Declare an Array</li>
+                <li>Initializing an Array</li>
+                <li>Accessing Array Elements</li>
+              </ul>
+            </li>
+            <li>Default Initialization of Arrays</li>
+            <li>Exploring Memory Layout with GitHub Copilot
+              <ul>
+                <li>Steps to Try This in VS Code</li>
+                <li>Sample Output: Copilot-Generated C++ Program</li>
+                <li>Compiling and Running the Program</li>
+              </ul>
+            </li>
+            <li>Data Types, Memory Layout, and Array Indexing</li>
+            <li>Traversing and Manipulating Arrays</li>
+          </ul>
+        </li>
+        <li>C-Style Null-Terminated Strings in C++
+          <ul>
+            <li>Declaration and Initialization</li>
+            <li>Element-wise Initialization</li>
+            <li>Initialization Using String Literal</li>
+            <li>Initialization Using a Brace-Initializer List</li>
+            <li>Difference between Initialization Styles</li>
+            <li>Traversing a C-Style String</li>
+            <li>Traversing a C-Style String Using strlen</li>
+          </ul>
+        </li>
+        <li>String Literals in C++
+          <ul>
+            <li>Understanding the Data Type of String Literals
+              <ul>
+                <li>Visual Verification</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>C++-Style std::array
+          <ul>
+            <li>Declaration and Initialization</li>
+            <li>Key Features</li>
+            <li>Accessing Elements
+              <ul>
+                <li>Access Using the Subscript Operator ([])</li>
+                <li>Access Using the .at() Member Function</li>
+              </ul>
+            </li>
+            <li>Determining the Number of Elements: .size()</li>
+            <li>Traversal of an std::array</li>
+          </ul>
+        </li>
+        <li>Transitioning from Fixed Arrays to std::string</li>
+        <li>Modern C++ Strings: std::string
+          <ul>
+            <li>Limitations of C-style Strings</li>
+            <li>Advantages of std::string over C-style Strings</li>
+            <li>Declaration and Initialization</li>
+            <li>Key Operations on std::string</li>
+          </ul>
+        </li>
+        <li>From Fixed-Size Arrays to Resizable Arrays
+          <ul>
+            <li>Key Features of std::vector</li>
+            <li>Declaring and Using std::vector
+              <ul>
+                <li>General Declaration Syntax</li>
+                <li>Initializing std::vector</li>
+              </ul>
+            </li>
+            <li>Adding Elements Dynamically
+              <ul>
+                <li>Using push_back()</li>
+                <li>Using emplace_back()</li>
+                <li>Difference between emplace_back() and push_back()</li>
+                <li>Best Practice</li>
+              </ul>
+            </li>
+            <li>Traversing a std::vector
+              <ul>
+                <li>Traditional for Loop with Indexing</li>
+                <li>Range-Based for Loop</li>
+              </ul>
+            </li>
+            <li>Modifying and Removing Elements
+              <ul>
+                <li>Removing Elements from a Vector</li>
+              </ul>
+            </li>
+            <li>Managing Capacity and Size
+              <ul>
+                <li>.size() versus .capacity()</li>
+                <li>Reserving Capacity in Advance</li>
+                <li>Resizing a Vector</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Detecting and Debugging Errors
+          <ul>
+            <li>Out-of-Bounds Access</li>
+            <li>Segmentation Fault</li>
+            <li>Safe Access with .at()</li>
+            <li>Debugging Tip: Visualize Errors with Online Tools</li>
+            <li>Using AI Tools to Prevent Segmentation Faults and Out-of-Bounds Access</li>
+          </ul>
+        </li>
+        <li>Using AI Tools to Generate a Multi-Container Stats Visualizer
+          <ul>
+            <li>Human Review and Takeaways
+              <ul>
+                <li>Guidelines for Using AI Tools Effectively</li>
+              </ul>
+            </li>
+            <li>Prompting AI Tools to Match Your Learning Level
+              <ul>
+                <li>Guide AI with Effective Prompts</li>
+                <li>Example Revised Prompt for Copilot</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 06</span>Object-Oriented Programming in C++ with AI Assistance</summary>
+      <ul>
+        <li>Introduction
+          <ul>
+            <li>Structure</li>
+            <li>Introduction to Classes, Objects, and Member Functions</li>
+            <li>Basic Syntax of a Class Declaration</li>
+            <li>Designing a Simple Class</li>
+            <li>Designing the Class Using Struct Construct</li>
+            <li>Instantiating a Class</li>
+            <li>Syntax for Creating an Object</li>
+          </ul>
+        </li>
+        <li>Understanding Data Encapsulation
+          <ul>
+            <li>Understanding Public and Private Access</li>
+            <li>Accessing Class Data: Dot Operator versus Public Methods</li>
+            <li>Hiding Data via the Private Section</li>
+            <li>Keeping Internal Data Hidden from Program Logic</li>
+          </ul>
+        </li>
+        <li>Encapsulation Mechanisms and Rules
+          <ul>
+            <li>Access Control in Classes</li>
+          </ul>
+        </li>
+        <li>Constructors, Destructors, and Object Lifecycle
+          <ul>
+            <li>Constructor
+              <ul>
+                <li>Member Initializer List</li>
+                <li>Order of Initialization</li>
+                <li>Inline Initialization</li>
+              </ul>
+            </li>
+            <li>Destructor</li>
+            <li>Object Lifecycle</li>
+          </ul>
+        </li>
+        <li>Copy Constructor and Copy Assignment Operator
+          <ul>
+            <li>Copy Constructor
+              <ul>
+                <li>Object Initialization</li>
+                <li>Passing Objects by Value to Functions</li>
+                <li>Returning Objects by Value from Functions</li>
+                <li>Copy Elision</li>
+              </ul>
+            </li>
+            <li>Copy Assignment Operator</li>
+            <li>Difference between Copy Constructor and Assignment Operator</li>
+            <li>Canonical Form of a Copy Assignment Operator</li>
+          </ul>
+        </li>
+        <li>Defaulted and Deleted Special Members
+          <ul>
+            <li>Using Default to Request Compiler-Generated Behavior</li>
+            <li>Using Delete to Forbid Certain Operations</li>
+          </ul>
+        </li>
+        <li>The Rule of Three</li>
+        <li>Type Conversions and the explicit Keyword
+          <ul>
+            <li>The Implicit Conversion</li>
+            <li>Using Explicit to Prevent Implicit Conversion</li>
+          </ul>
+        </li>
+        <li>Static and Non-Static Members
+          <ul>
+            <li>Static Member Function</li>
+          </ul>
+        </li>
+        <li>Defining Member Functions outside the Class</li>
+        <li>Creating and Using a Static Library in C++
+          <ul>
+            <li>Build the Static Library</li>
+            <li>Customer App Integration</li>
+          </ul>
+        </li>
+        <li>Const Member Functions and Mutable Members
+          <ul>
+            <li>The Mutable Keyword</li>
+          </ul>
+        </li>
+        <li>Operator Overloading</li>
+        <li>Inheritance</li>
+        <li>AI-Generated Class Scaffolds and Design Comparison
+          <ul>
+            <li>A Prompt to the AI (Copilot)</li>
+            <li>Analysis of the AI-Generated Code</li>
+          </ul>
+        </li>
+        <li>Mini-Project: Zoo Management Simulator Using OOP
+          <ul>
+            <li>Implement the Animal Behaviors</li>
+          </ul>
+        </li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 07</span>Pointers and Memory Management</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>Pointer Basics: Declaration, Dereferencing, and Types
+          <ul>
+            <li>General Pointer Declaration Syntax</li>
+            <li>Pointer Dereferencing</li>
+            <li>Pointer Types and Type Safety</li>
+          </ul>
+        </li>
+        <li>Safe Initialization and nullptr</li>
+        <li>Pointers and Arrays
+          <ul>
+            <li>Array Name and Pointer Decay</li>
+            <li>The sizeof Difference</li>
+            <li>Passing Arrays to Functions</li>
+          </ul>
+        </li>
+        <li>Pointer Arithmetic
+          <ul>
+            <li>Pointer Arithmetic with Arrays</li>
+          </ul>
+        </li>
+        <li>Dynamic Memory Management
+          <ul>
+            <li>Array Allocation and Deallocation Using new[] and delete[]</li>
+            <li>Allocation and Deallocation of User-Defined Types
+              <ul>
+                <li>Member Access through Pointers: The Arrow Operator</li>
+              </ul>
+            </li>
+            <li>Problem with Manual Memory Management
+              <ul>
+                <li>Dangling Pointers</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>RAII (Resource Acquisition Is Initialization)
+          <ul>
+            <li>C++&rsquo;s Guarantee: Destructors Always Run on Scope Exit
+              <ul>
+                <li>RAII in Action</li>
+                <li>RAII Solves the Problem</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Smart Pointers: RAII in Practice
+          <ul>
+            <li>Understanding Class Templates in C++</li>
+            <li>Types of Smart Pointers
+              <ul>
+                <li>Unique Pointer</li>
+                <li>Creating, Initializing, and Using unique_ptr</li>
+                <li>Using std::make_unique</li>
+                <li>The Auto Keyword</li>
+                <li>Shared Pointer</li>
+                <li>Creating, Initializing, and Using shared_ptr</li>
+                <li>Using std::make_shared</li>
+                <li>Single Allocation Efficiency</li>
+                <li>std::shared_ptr: Pass by Value versus Const Reference</li>
+                <li>Weak Pointer</li>
+                <li>The Purpose of weak_ptr</li>
+                <li>The Cyclic Reference Problem</li>
+                <li>Creating, Initializing, and Using weak_ptr</li>
+                <li>Declaring a weak_ptr</li>
+                <li>Initialization from an Existing shared_ptr</li>
+                <li>Accessing a weak_ptr</li>
+                <li>Checking Object Validity with Expired()</li>
+                <li>Recommended Pattern for Accessing a std::weak_ptr</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Releasing and Replacing Ownership</li>
+        <li>Accessing the Raw Pointer with get()</li>
+        <li>Using AI Tools to Generate and Debug Pointer-Based Code
+          <ul>
+            <li>How Copilot Helps with Pointers</li>
+            <li>Debugging with Prompts</li>
+          </ul>
+        </li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 08</span>Inheritance and Polymorphism</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>Inheritance Basics: Base and Derived Classes
+          <ul>
+            <li>Base Class</li>
+          </ul>
+        </li>
+        <li>Derived Class
+          <ul>
+            <li>Minimize Code Changes, Reduce Bugs</li>
+            <li>Access Specifier: Private versus Protected</li>
+            <li>Minimize Access to Maximize Data Encapsulation</li>
+            <li>Understanding the Inheritance in Savings Account</li>
+            <li>Representing Inheritance with UML</li>
+          </ul>
+        </li>
+        <li>Access Control in Inheritance
+          <ul>
+            <li>Public Inheritance</li>
+            <li>Protected Inheritance</li>
+            <li>Private Inheritance</li>
+          </ul>
+        </li>
+        <li>Name Hiding or Shadowing</li>
+        <li>Derived Class Object Accessing Base Class Members
+          <ul>
+            <li>Scope Resolution Operator</li>
+          </ul>
+        </li>
+        <li>From Compile-Time Resolution to Runtime Behavior
+          <ul>
+            <li>Base Class Pointer Can Point to a Derived Class Object</li>
+            <li>Virtual Function and Dynamic Dispatch</li>
+            <li>Polymorphism</li>
+            <li>Pure Virtual Functions and Abstract Classes</li>
+          </ul>
+        </li>
+        <li>Putting It All Together
+          <ul>
+            <li>The Shape Hierarchy</li>
+            <li>Defining Inherited Concrete Shapes</li>
+            <li>Managing Objects via Smart Pointers and Containers</li>
+            <li>Generic Algorithms and Polymorphism</li>
+            <li>Dynamic Dispatch in Action</li>
+            <li>Importance of the Override Keyword</li>
+            <li>Virtual Destructors</li>
+            <li>The Final Specifier</li>
+          </ul>
+        </li>
+        <li>Object Slicing</li>
+        <li>The Diamond Problem
+          <ul>
+            <li>Virtual Inheritance</li>
+          </ul>
+        </li>
+        <li>AI-Assisted Mini Project: Smart Home Device Control System
+          <ul>
+            <li>Project Brief</li>
+            <li>File Structure</li>
+            <li>Smart Home Device Control System
+              <ul>
+                <li>Prompts for Copilot to Generate Source Code</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 09</span>Templates and Exceptions</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>Motivation for Templates: Reducing Code Duplication
+          <ul>
+            <li>Advantages of Using Templates</li>
+          </ul>
+        </li>
+        <li>Function Templates
+          <ul>
+            <li>Calling Function Templates</li>
+          </ul>
+        </li>
+        <li>Class Templates</li>
+        <li>Template Instantiation</li>
+        <li>Compile-Time Type Checking in Templates</li>
+        <li>Template Specialization
+          <ul>
+            <li>Full Specialization</li>
+            <li>Partial Specialization</li>
+          </ul>
+        </li>
+        <li>Exception Handling in C++
+          <ul>
+            <li>Exception Handling by Example</li>
+            <li>Multiple Exception Types</li>
+            <li>Catch-All Handlers</li>
+          </ul>
+        </li>
+        <li>The C++ Exception Class
+          <ul>
+            <li>The Exception Hierarchy in C++
+              <ul>
+                <li>Logic Errors</li>
+                <li>Runtime Errors</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Catch Block Hierarchy</li>
+        <li>Rethrowing Exceptions</li>
+        <li>std::terminate and Program Termination</li>
+        <li>Stack Unwinding during Exception Handling</li>
+        <li>Destructors Must Not Throw</li>
+        <li>Exception Safety and RAII</li>
+        <li>noexcept and Exception Specifications in Modern C++</li>
+        <li>Best Practices and Common Pitfalls</li>
+        <li>AI-Assisted Mini Project: Generic Data Processing with Exception Handling
+          <ul>
+            <li>Code Walk through</li>
+            <li>Analysis</li>
+          </ul>
+        </li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 10</span>Standard Template Library and Generic Programming</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>Introduction to the STL and Its Role in Modern C++</li>
+        <li>Containers
+          <ul>
+            <li>std::vector: The Dynamic Array
+              <ul>
+                <li>Declaring and Initializing a Vector</li>
+                <li>Adding New Data</li>
+                <li>Removing Data</li>
+                <li>Introducing Iterators in Containers</li>
+                <li>Accessing Vector Elements</li>
+                <li>Traversing a Vector</li>
+              </ul>
+            </li>
+            <li>std::list: The Doubly Linked List
+              <ul>
+                <li>Declaring and Initializing a List</li>
+                <li>Adding and Removing Data</li>
+                <li>Erasing Element</li>
+                <li>Accessing and Traversing Elements</li>
+                <li>When to Use std::list</li>
+              </ul>
+            </li>
+            <li>std::map: The Ordered Key-Value Store
+              <ul>
+                <li>Declaring and Initializing a Map</li>
+                <li>Alternative Ways to Initialize STL Map</li>
+                <li>Custom Ordering in std::map</li>
+                <li>Adding Elements to the Map</li>
+                <li>Removing Elements from Map</li>
+                <li>Accessing Elements</li>
+                <li>Traversing a Map</li>
+                <li>Searching for Elements</li>
+              </ul>
+            </li>
+            <li>std::multimap: Handling Duplicate Keys
+              <ul>
+                <li>Searching Elements in Multimap</li>
+              </ul>
+            </li>
+            <li>std::unordered_map: The Hash-Based Key-Value Store</li>
+            <li>Trade-offs between Map and unordered_map</li>
+            <li>std::set: The Ordered Unique Collection
+              <ul>
+                <li>Declaring and Initializing a Set</li>
+                <li>Adding Elements</li>
+                <li>Removing Elements</li>
+                <li>Accessing and Traversing Elements</li>
+                <li>Searching for Elements</li>
+                <li>Summary of Common Set Operations</li>
+                <li>When to Use std::set</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Performance Considerations in STL Containers
+          <ul>
+            <li>Contiguous Containers: std::vector</li>
+            <li>Linked Containers: std::list</li>
+            <li>Associative Containers: std::map and std::set</li>
+            <li>Unordered Containers: std::unordered_map</li>
+            <li>Choosing the Right Container</li>
+          </ul>
+        </li>
+        <li>Overview of STL Algorithms
+          <ul>
+            <li>std::sort: Sorting Elements</li>
+            <li>std::find: Searching for a Specific Value</li>
+            <li>std::find_if: Searching by Condition</li>
+            <li>std::transform: Applying an Operation to Each Element</li>
+            <li>std::for_each: Performing an Action on Each Element</li>
+            <li>std::lower_bound, std::upper_bound: Fast Positions in Sorted Data</li>
+            <li>Summary</li>
+          </ul>
+        </li>
+        <li>AI-Assisted Mini-Project
+          <ul>
+            <li>Implementing an LRU Cache Using STL Containers with GitHub Copilot
+              <ul>
+                <li>Project Goal</li>
+                <li>Working in VS Code with Copilot (Agent Mode)</li>
+                <li>Create the Base Implementation</li>
+                <li>Convert It into a Class Template</li>
+                <li>Refine the Interface for Safety and Correctness</li>
+                <li>Improve Const-Correctness and Exception Safety</li>
+                <li>Understanding the Final Implementation</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 11</span>Functors, Lambdas, and Move Semantics</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>Function Objects (Functors)
+          <ul>
+            <li>Functors: Functions with Memory</li>
+            <li>Stateful versus Stateless Functors</li>
+            <li>Reusability and Encapsulation</li>
+            <li>Functors and STL Algorithms</li>
+          </ul>
+        </li>
+        <li>Lambda Expressions
+          <ul>
+            <li>The Need for Inline Flexibility</li>
+            <li>Basic Lambda Syntax and Structure</li>
+            <li>Lambdas as Compiler-Generated Functors</li>
+          </ul>
+        </li>
+        <li>Closures: Capturing Context
+          <ul>
+            <li>Understanding Lambda Captures</li>
+            <li>Dangling References</li>
+            <li>A Real-World Example: IoT Sensor Monitoring</li>
+          </ul>
+        </li>
+        <li>Lambdas and STL Algorithms
+          <ul>
+            <li>Lambda for Clarity in STL Algorithms</li>
+            <li>Using Lambdas to Customize STL Algorithm Behavior</li>
+          </ul>
+        </li>
+        <li>Understanding Move Semantics
+          <ul>
+            <li>Temporaries in C++
+              <ul>
+                <li>Function Return Values</li>
+                <li>Implicit Conversions</li>
+                <li>Expression Results</li>
+              </ul>
+            </li>
+            <li>lvalues and rvalues</li>
+            <li>lvalue and rvalue References</li>
+            <li>Temporaries and Reference Binding</li>
+            <li>Move Constructors and Move Assignment Operators
+              <ul>
+                <li>Move Constructor</li>
+                <li>Move Assignment Operator</li>
+              </ul>
+            </li>
+            <li>Practical Usage of std::move and std::forward</li>
+          </ul>
+        </li>
+        <li>AI-Assisted Mini-Project</li>
+        <li>Project Overview</li>
+        <li>Setting up</li>
+        <li>Working Hand in Hand with Copilot
+          <ul>
+            <li>Prompt 1: Designing the Move-Only Data Container</li>
+            <li>Prompt 2: Add Human-Readable Output</li>
+            <li>Prompt 3: Add Calibration Functor</li>
+            <li>Prompt 4: Add Lambda Filter</li>
+            <li>Prompt 5: Build the Full Processing Pipeline</li>
+            <li>Prompt 6: Demonstrate the Pipeline with main()</li>
+            <li>Prompt 7: AI Code Review and Final Polish</li>
+            <li>Compiling the Project from the Command Line</li>
+            <li>Compiling and Running the Modified Code</li>
+            <li>Identifying the Erroneous Output</li>
+            <li>Analyzing the Bug</li>
+            <li>Fixing the Bug</li>
+          </ul>
+        </li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 12</span>Multithreading and Concurrency Basics</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>Introduction to Concurrency
+          <ul>
+            <li>Concurrency versus Parallelism
+              <ul>
+                <li>Understanding Parallelism</li>
+                <li>Pseudo-Parallelism on a Single Core</li>
+                <li>A Simple Analogy</li>
+                <li>Concurrency as Design, Parallelism as Execution</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Processes and Threads
+          <ul>
+            <li>Processes: Independent Execution Units</li>
+            <li>Threads: Lightweight Execution Paths</li>
+          </ul>
+        </li>
+        <li>Thread Creation and Lifecycle Management
+          <ul>
+            <li>Creating a Thread</li>
+            <li>Joining a Thread</li>
+            <li>Detaching a Thread</li>
+          </ul>
+        </li>
+        <li>RAII-Based Thread Management
+          <ul>
+            <li>Use of joinable() for Safe Thread Cleanup</li>
+            <li>Transitioning to Standard RAII Threads in C++20
+              <ul>
+                <li>Native RAII Implementation in std::jthread</li>
+                <li>Standardized Cooperative Interruption</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Returning Results from Threads
+          <ul>
+            <li>Setting up the Two One-Way Channels</li>
+            <li>Spawning the Worker and Transferring Ownership</li>
+            <li>What the Worker Thread Does</li>
+            <li>The Main Thread Sends the Input</li>
+            <li>The Main Thread Waits for the Result</li>
+          </ul>
+        </li>
+        <li>Asynchronous Task Execution with std::async
+          <ul>
+            <li>Understanding Launch Policies</li>
+          </ul>
+        </li>
+        <li>Sharing Data and Synchronization
+          <ul>
+            <li>Race Condition</li>
+            <li>Mutual Exclusion with Mutexes</li>
+            <li>RAII-Based Lock Management Using std::lock_guard</li>
+            <li>std::unique_lock: Flexible Locking</li>
+            <li>std::shared_mutex: Reader-Writer Locking</li>
+          </ul>
+        </li>
+        <li>Waiting for Events: Condition Variables
+          <ul>
+            <li>Using notify_all()</li>
+          </ul>
+        </li>
+        <li>Atomic Operations
+          <ul>
+            <li>Memory Ordering in Atomic Operations</li>
+          </ul>
+        </li>
+        <li>AI-Assisted Mini-Project: Building a Thread-Safe Queue
+          <ul>
+            <li>Project Context</li>
+            <li>Step 1: Generating the Boilerplate with Copilot</li>
+            <li>AI Code Review
+              <ul>
+                <li>Missing Shutdown Mechanism</li>
+                <li>Unsafe Waiting Behavior</li>
+                <li>Return Type Limitation</li>
+                <li>Thread-Safety of Observers</li>
+                <li>Naming Consistency</li>
+                <li>Simplifying the Main Function</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 13</span>Debugging, Testing, and Refactoring with AI Tools</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>Fundamentals of Debugging in C++
+          <ul>
+            <li>Compile with Debug Information</li>
+            <li>Introducing Makefile
+              <ul>
+                <li>Role of Makefiles in Debugging</li>
+                <li>Debug Build and Release Build</li>
+                <li>Dependency Management and Incremental Rebuilds</li>
+                <li>Consistency and Reproducibility</li>
+                <li>Transparency and Debugging Knowledge</li>
+                <li>Build Tools Overview and Key Terms</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Enabling Debug Information
+          <ul>
+            <li>Running without Debug Information</li>
+            <li>Including Debug Information via Makefile
+              <ul>
+                <li>Makefile Example</li>
+              </ul>
+            </li>
+            <li>Running with Debug Information</li>
+          </ul>
+        </li>
+        <li>Debugging with GDB
+          <ul>
+            <li>Installing GDB (GNU Debugger)</li>
+            <li>Example Program
+              <ul>
+                <li>Logic Error</li>
+                <li>Compiling the Program</li>
+              </ul>
+            </li>
+            <li>Stepping through Code with GDB
+              <ul>
+                <li>Attaching GDB to the Executable</li>
+                <li>Setting a Breakpoint in GDB</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Essential GDB Commands
+          <ul>
+            <li>Useful Notes about GDB</li>
+          </ul>
+        </li>
+        <li>Analyzing Core Dump Using GDB
+          <ul>
+            <li>Prerequisites: Generating a Core Dump</li>
+            <li>Example Program</li>
+            <li>Compile the Program</li>
+            <li>Run the Program and Trigger the Crash</li>
+            <li>Locate the Core File
+              <ul>
+                <li>Troubleshooting</li>
+              </ul>
+            </li>
+            <li>Load the Core File in GDB</li>
+            <li>Inspect the Backtrace</li>
+            <li>Inspect Variables at the Point of Failure</li>
+            <li>Moving to the Relevant Stack Frame</li>
+            <li>Inspecting the Data That Caused the Crash</li>
+            <li>Identifying the Issue and Applying the Fix</li>
+          </ul>
+        </li>
+        <li>Debugging by Strace
+          <ul>
+            <li>Useful Strace Options</li>
+            <li>Running with strace</li>
+            <li>Understanding the Strace Output</li>
+          </ul>
+        </li>
+        <li>Debugging with Valgrind
+          <ul>
+            <li>How Valgrind Works
+              <ul>
+                <li>Performance Overhead</li>
+              </ul>
+            </li>
+            <li>Running a C++ Program under Valgrind
+              <ul>
+                <li>Debug Builds and Valgrind</li>
+                <li>Running with Valgrind</li>
+              </ul>
+            </li>
+            <li>Understanding the Valgrind Output
+              <ul>
+                <li>Invalid Read</li>
+                <li>Location of the Invalid Read</li>
+                <li>Point at Which the Memory was Freed</li>
+                <li>Point at Which the Memory was Allocated</li>
+                <li>Heap Summary</li>
+                <li>Error Summary</li>
+              </ul>
+            </li>
+            <li>Suppressions
+              <ul>
+                <li>Using Suppressions with the Current Example</li>
+                <li>Suppression Rule</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Static Analysis with cppcheck
+          <ul>
+            <li>Installing cppcheck on Ubuntu</li>
+            <li>Running cppcheck on the Source Code</li>
+          </ul>
+        </li>
+        <li>Compiler-Aware Static Analysis with Clang-tidy
+          <ul>
+            <li>Installing Clang-tidy on Ubuntu</li>
+            <li>Using Clang-tidy in Practice</li>
+            <li>Configuring Clang-tidy</li>
+            <li>Build and Analysis Support Using a Makefile</li>
+            <li>Interpreting the Diagnostic</li>
+          </ul>
+        </li>
+        <li>Transitioning from Debugging to Testing</li>
+        <li>Unit Testing with GoogleTest
+          <ul>
+            <li>Setting up GoogleTest on Ubuntu
+              <ul>
+                <li>Installing the GoogleTest Source Package</li>
+                <li>Installing CMake</li>
+                <li>Compile the GoogleTest Libraries</li>
+                <li>Install the Compiled Libraries</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Test-Driven Development Workflow
+          <ul>
+            <li>Writing Your First Test
+              <ul>
+                <li>Preparing the Workspace</li>
+                <li>Compiling the Program</li>
+                <li>Running the Program</li>
+                <li>Understanding the Test Output</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Introduction to GoogleMock
+          <ul>
+            <li>Installing the Required Dependencies</li>
+            <li>Setting up the Example</li>
+            <li>Mocking What is Not Available</li>
+            <li>Implement the Test</li>
+            <li>Preparing the Build</li>
+            <li>Compiling and Running the Test</li>
+            <li>Understanding the Output</li>
+            <li>Purpose of GoogleMock Test</li>
+          </ul>
+        </li>
+        <li>Introducing CI/CD
+          <ul>
+            <li>Importance of Continuous Testing in Modern Development</li>
+            <li>Integrating Debug Tools with GoogleMock Test
+              <ul>
+                <li>Preparing the Workspace</li>
+                <li>Understanding the Program</li>
+                <li>Representing a Missing Dependency</li>
+                <li>Creating a Mock Replacement</li>
+                <li>Code under Test</li>
+                <li>Setting up the Expectation</li>
+                <li>Demonstrating Debugging-Tool Integration</li>
+                <li>Integrating Debugging Tools via the Makefile</li>
+                <li>Understanding What the Makefile Does</li>
+                <li>Compiling and Running the Program</li>
+                <li>Laying the Groundwork for CI/CD Integration</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>AI-Assisted Testing</li>
+        <li>Refactoring Principles and Techniques</li>
+        <li>AI-Powered Refactoring</li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 14</span>Debugging Strategies for C++ Engineers</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>Building a Mental Model
+          <ul>
+            <li>Characterizing the Problem</li>
+            <li>Visualizing the Problem</li>
+          </ul>
+        </li>
+        <li>Localize the Problem</li>
+        <li>Make an Action Plan
+          <ul>
+            <li>AI Assistance: Formalizing and Reviewing the Action Plan</li>
+          </ul>
+        </li>
+        <li>Log Your Actions
+          <ul>
+            <li>AI Assistance: Structuring Investigation Records</li>
+          </ul>
+        </li>
+        <li>Discuss with Colleagues</li>
+        <li>Debugging by Code Browsing
+          <ul>
+            <li>Code Inspection: Vim, cscope, and ctags on Linux
+              <ul>
+                <li>Installing Vim</li>
+                <li>Installing cscope</li>
+                <li>Installing ctags</li>
+                <li>Generating the cscope Database</li>
+                <li>Collecting Source and Header Files</li>
+                <li>Building the cscope Database File</li>
+                <li>Generating the ctags Database</li>
+                <li>Integrating cscope Databases with Vim</li>
+                <li>Setting the cscope Environment Variable</li>
+                <li>Recommended Persistent Vim Configuration</li>
+                <li>Structured Code Walkthrough in Vim</li>
+              </ul>
+            </li>
+            <li>Browsing in Visual Studio Code
+              <ul>
+                <li>Setting up the Project for Inspection</li>
+                <li>Configuration for Accurate Navigation</li>
+                <li>Launching the Editor</li>
+                <li>Essential Code Navigation Shortcuts</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Debugging by Searching
+          <ul>
+            <li>Targeted Recursive Search
+              <ul>
+                <li>Combining Multiple String Patterns in a Single Search</li>
+                <li>Excluding Directories from Recursive Searches</li>
+                <li>Targeting Specific Subsets</li>
+                <li>Excluding Binary Files from Searches</li>
+              </ul>
+            </li>
+            <li>Inspecting Binaries with Strings Command</li>
+            <li>Combining Search Utilities
+              <ul>
+                <li>Restricting Searches by File Type</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Debugging by Log Inspection
+          <ul>
+            <li>Using Log Viewers
+              <ul>
+                <li>AI Assistance: Summarizing Large Log Excerpts</li>
+              </ul>
+            </li>
+            <li>Logs as a Temporal Narrative
+              <ul>
+                <li>Debugging through Trace Instrumentation</li>
+                <li>Building and Running the Example</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>Debugging through Historical Comparison
+          <ul>
+            <li>Binary Search over Releases</li>
+            <li>Using git bisect</li>
+          </ul>
+        </li>
+        <li>Debugging through Version Control
+          <ul>
+            <li>Using git log</li>
+            <li>Using git show
+              <ul>
+                <li>Inspecting a Suspect Commit</li>
+              </ul>
+            </li>
+            <li>Using git blame</li>
+          </ul>
+        </li>
+        <li>Debugging through Visual Diff Tools</li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary><span class="tfb-ch">CH 15</span>Prompt Engineering for C++ Developers</summary>
+      <ul>
+        <li>Introduction</li>
+        <li>Structure</li>
+        <li>The Structure of an Effective Prompt
+          <ul>
+            <li>Context: Define the Environment
+              <ul>
+                <li>The Weak Prompt Example</li>
+                <li>The Refined Prompt</li>
+                <li>Taking it Further: Iterative Refinement</li>
+              </ul>
+            </li>
+            <li>Intent: State What You Need</li>
+            <li>Constraints: Set the Boundaries</li>
+            <li>Role: Define the Perspective</li>
+            <li>Output Structure: Specify the Format</li>
+          </ul>
+        </li>
+        <li>Types of Prompts Used in C++ Development
+          <ul>
+            <li>Generation Prompts
+              <ul>
+                <li>Example: Generating a Thread-Safe Resource Manager</li>
+              </ul>
+            </li>
+            <li>Explanation Prompts</li>
+            <li>Strategic Refactoring Prompts</li>
+            <li>Debugging Prompts</li>
+            <li>Optimization Prompts</li>
+          </ul>
+        </li>
+        <li>Techniques for Constructing Prompts
+          <ul>
+            <li>Step-by-Step Prompting</li>
+            <li>Iterative Refinement</li>
+            <li>Chaining</li>
+          </ul>
+        </li>
+        <li>Recognizing and Managing the Limitations of AI
+          <ul>
+            <li>Hallucination</li>
+            <li>Vagueness</li>
+            <li>Wrong Environment Assumptions</li>
+          </ul>
+        </li>
+        <li>Prompting Anti-Patterns
+          <ul>
+            <li>Overconstraint</li>
+            <li>Mixed Tasks</li>
+            <li>Style Contradictions</li>
+          </ul>
+        </li>
+        <li>Mini Project: Prompt Refinement for Behavior-Preserving Code Modernization
+          <ul>
+            <li>Objective</li>
+            <li>Original Implementation</li>
+            <li>Weak Prompt</li>
+            <li>Refined Prompt</li>
+            <li>Refactored Implementation</li>
+            <li>Validation and Analysis</li>
+            <li>Learning Outcome</li>
+          </ul>
+        </li>
+        <li>Conclusion</li>
+      </ul>
+    </details>
+
+  </div>
+
+  <!-- WHO THIS BOOK IS FOR -->
+  <div class="tfb-section-header tfb-audience-heading">
+    <h2>Who this book is for</h2>
+    <span class="tfb-rule"></span>
+  </div>
+
+  <div class="tfb-prose tfb-audience">
+    <p>
+      <em>Prompting C++ for Systems Engineering</em> is designed for students,
+      software developers, embedded and systems engineers, interview
+      candidates, and professionals who want to strengthen their knowledge of
+      modern C++ and responsible AI-assisted software development.
+    </p>
+    <p>
+      No previous C++ experience is assumed, although familiarity with basic
+      programming concepts will be helpful.
+    </p>
+  </div>
+
+  <!-- ABOUT THE AUTHOR -->
+  <div class="tfb-section-header tfb-author-heading">
+    <h2>About the author</h2>
+    <span class="tfb-rule"></span>
+  </div>
+
+  <div class="tfb-prose tfb-author">
+    <p>
+      <strong>Vivek Bhadra</strong> is a published C++ author and Embedded
+      Software Engineer with more than 24 years of professional experience in
+      C++, embedded systems, real-time software, and low-level development.
+      He has worked across industries including IoT, defence, EV charging,
+      networking, consumer electronics, and marine technology.
+    </p>
+    <p>
+      Alongside his engineering career, he has mentored developers and
+      provided structured C++ tuition to students, early-career engineers,
+      experienced professionals, and technical-interview candidates.
+    </p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="tfb-section-header tfb-faq-heading">
+    <h2>Frequently asked questions</h2>
+    <span class="tfb-rule"></span>
+  </div>
+
+  <div class="tfb-faq">
+
+    <details>
+      <summary>Is this book suitable for C++ beginners?</summary>
+      <p>
+        Yes. It begins with development-environment setup, fundamental data
+        types, control flow, functions, arrays, strings, and object-oriented
+        programming before progressing to advanced material.
+      </p>
+    </details>
+
+    <details>
+      <summary>Does the book cover modern C++?</summary>
+      <p>
+        Yes. It covers smart pointers, RAII, templates, STL containers and
+        algorithms, lambdas, move semantics, concurrency, atomics, and
+        <code>std::jthread</code>.
+      </p>
+    </details>
+
+    <details>
+      <summary>Does the book teach debugging and testing?</summary>
+      <p>
+        Yes. It covers GDB, Valgrind, strace, core dumps, cppcheck,
+        clang-tidy, GoogleTest, GoogleMock, refactoring, and systematic
+        debugging strategies.
+      </p>
+    </details>
+
+    <details>
+      <summary>How are AI tools used in the book?</summary>
+      <p>
+        The book demonstrates GitHub Copilot and ChatGPT while teaching
+        readers to review generated code critically and identify
+        hallucinations, vague prompts, and incorrect environment assumptions.
+      </p>
+    </details>
+
+    <details>
+      <summary>Where can I buy the book?</summary>
+      <p>
+        You can purchase it directly from Orange AVA or through Amazon USA,
+        India, the United Kingdom, Germany and Spain, subject to regional
+        availability. Publisher discount codes apply only to direct purchases
+        from Orange AVA, not to Amazon orders.
+      </p>
+    </details>
+
+  </div>
+
+  <!-- SOURCE CODE REPOSITORY -->
+  <div class="tfb-section-header tfb-source-heading">
+    <h2>Source code repository</h2>
+    <span class="tfb-rule"></span>
+  </div>
+
+  <div class="tfb-source-card">
+    <div class="tfb-source-icon" aria-hidden="true">&lt;/&gt;</div>
+
+    <div class="tfb-source-content">
+      <p class="tfb-source-label">GITHUB REPOSITORY</p>
+
+      <h3>Prompt-to-CPP: Source Code Repository</h3>
+
+      <p>
+        Explore the official source-code repository accompanying
+        <strong>Prompting C++ for Systems Engineering</strong>. The repository
+        contains the C++ examples organised by chapter, allowing readers to
+        examine, compile, run, and experiment with the programs discussed
+        throughout the book.
+      </p>
+
+      <a class="tfb-btn tfb-btn--primary"
+         href="https://github.com/ava-orange-education/Prompting-C-plus-plus-for-Systems-Engineering-published-by-Orange-AVA-"
+         target="_blank" rel="noopener noreferrer">
+        View source code on GitHub
+      </a>
+    </div>
+  </div>
+
+  <section class="tfb-purchase-panel tfb-final-buy"
+           aria-labelledby="tfb-final-buy-heading">
+    <h2 id="tfb-final-buy-heading">Ready to begin?</h2>
+    <p>
+      Choose a direct publisher purchase or your regional Amazon marketplace.
+    </p>
+    <div class="tfb-buy">
+      <a class="tfb-btn tfb-btn--primary"
+         href="https://orangeava.com/products/prompting-c-for-systems-engineering"
+         target="_blank" rel="noopener noreferrer">Buy from Orange AVA</a>
+      <a class="tfb-btn tfb-btn--ghost"
+         href="https://www.amazon.com/dp/8169646170"
+         target="_blank" rel="noopener noreferrer">Amazon USA</a>
+      <a class="tfb-btn tfb-btn--ghost"
+         href="https://www.amazon.in/dp/8169646170"
+         target="_blank" rel="noopener noreferrer">Amazon India</a>
+      <a class="tfb-btn tfb-btn--ghost"
+         href="https://www.amazon.co.uk/dp/8169646170"
+         target="_blank" rel="noopener noreferrer">Amazon UK</a>
+      <a class="tfb-btn tfb-btn--ghost"
+         href="https://www.amazon.com/dp/8169646170"
+         target="_blank" rel="noopener noreferrer">International</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* Remove the short-lived offer automatically after 31 July 2026 in the UK. */
+(function () {
+  var offer = document.getElementById('tfb-refresh-offer');
+  var expires = new Date('2026-08-01T00:00:00+01:00');
+  if (offer && Date.now() >= expires.getTime()) {
+    offer.remove();
+  }
+}());
+</script>
+<!-- /wp:html -->
