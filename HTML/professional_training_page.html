@@ -1,0 +1,829 @@
+<!-- wp:html -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+/* ─────────────────────────────────────────────
+   TECHFORTALK · PROFESSIONAL TRAINING PAGE
+   tokens: ink #0E1726 · paper #F7F9FB
+   accent #2050F5 · terminal #0C1117 · green #1BAA6F
+   ───────────────────────────────────────────── */
+
+/* Reuse the home page's static engineering-grid canvas behind the training
+   content. This is isolated to the Professional Training page. The existing
+   category banner retains its own background and styling. */
+body.page-id-8604 .site {
+  background:
+    linear-gradient(rgba(111, 168, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(111, 168, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(
+      115deg,
+      transparent 35%,
+      rgba(32, 80, 245, 0.04) 42%,
+      rgba(111, 168, 255, 0.16) 48%,
+      rgba(61, 220, 151, 0.13) 52%,
+      rgba(32, 80, 245, 0.04) 58%,
+      transparent 65%
+    ),
+    radial-gradient(
+      circle at 18% 50%,
+      rgba(32, 80, 245, 0.16),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 72% 45%,
+      rgba(61, 220, 151, 0.08),
+      transparent 30%
+    ),
+    #0C1117 !important;
+  background-size: 38px 38px, 38px 38px, 55% 100%, auto, auto, auto;
+  background-position: 0 0, 0 0, 50% 0, center, center, center;
+}
+
+.tfc *,
+.tfc *::before,
+.tfc *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.tfc {
+  --ink: #0E1726;
+  --ink-soft: #46536B;
+  --ink-faint: #7C879C;
+  --paper: #F7F9FB;
+  --line: #DDE3EC;
+  --accent: #2050F5;
+  --accent-dim: #E8EDFE;
+  --term: #0C1117;
+  --term-line: #1C2530;
+  --term-text: #C9D4E3;
+  --green: #1BAA6F;
+  --green-bright: #3DDC97;
+
+  /* Remain inside the WordPress content column at every device width. */
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  float: none !important;
+  clear: both !important;
+  display: block !important;
+  overflow: hidden;
+  overflow: clip;
+  container-name: tfc-page;
+  container-type: inline-size;
+
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.55;
+  text-align: left !important;
+  background: var(--paper) !important;
+}
+
+.tfc-wrap {
+  width: 100%;
+  max-width: 1200px;
+  min-width: 0;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1rem, 3.5vw, 2rem) 4rem;
+}
+
+/* Allow nested grid/flex content to shrink instead of forcing overflow. */
+.tfc .tfc-wrap > *,
+.tfc .tfc-grid > *,
+.tfc .tfc-steps > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.tfc h1,
+.tfc h2,
+.tfc h3,
+.tfc p,
+.tfc a,
+.tfc li,
+.tfc span {
+  overflow-wrap: anywhere;
+}
+
+/* Theme armour: alignment, casing, colours, margins */
+.tfc h1, .tfc h2, .tfc h3, .tfc p, .tfc a, .tfc span,
+.tfc div, .tfc section, .tfc ul, .tfc li, .tfc details, .tfc summary {
+  text-align: left !important;
+  text-transform: none !important;
+}
+
+.tfc h1, .tfc h2, .tfc h3 {
+  font-family: 'Archivo', sans-serif !important;
+  margin-top: 0 !important;
+}
+
+.tfc p { margin-top: 0 !important; }
+
+.tfc a {
+  box-shadow: none !important;
+  border-bottom: none !important;
+  text-decoration: none !important;
+}
+
+.tfc a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ── HERO: TERMINAL PANEL ── */
+.tfc-hero {
+  background: var(--term) !important;
+  border: 1px solid var(--term-line);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+.tfc-hero-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1.1rem;
+  border-bottom: 1px solid var(--term-line);
+}
+
+.tfc-hero-dots { display: flex; gap: 6px; }
+
+.tfc-hero-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2A3542;
+}
+
+.tfc-hero-bar-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #5D6B7E !important;
+}
+
+.tfc-hero-body { padding: 2.4rem 2.2rem 2.6rem; }
+
+.tfc-hero-prompt {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--term-text) !important;
+  margin: 0 0 1.5rem !important;
+}
+
+.tfc-hero-prompt .u { color: var(--green-bright) !important; }
+.tfc-hero-prompt .p { color: #6FA8FF !important; }
+
+.tfc-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  background: var(--green-bright);
+  vertical-align: text-bottom;
+  margin-left: 4px;
+  animation: tfc-blink 1.1s steps(1) infinite;
+}
+
+@keyframes tfc-blink {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tfc .tfc-cursor { animation: none; }
+}
+
+.tfc-hero h1 {
+  font-weight: 800 !important;
+  font-size: clamp(1.9rem, 4.2vw, 3rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.025em !important;
+  color: #F2F6FB !important;
+  max-width: 20ch;
+  margin: 0 0 1.1rem !important;
+}
+
+.tfc-hero h1 em {
+  font-style: normal !important;
+  color: #6FA8FF !important;
+}
+
+.tfc-hero-sub {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #97A4B8 !important;
+  max-width: 62ch;
+  margin: 0 0 1.7rem !important;
+}
+
+/* ── BUTTONS ── */
+.tfc-btn {
+  display: inline-block;
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  padding: 0.7rem 1.4rem !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--accent) !important;
+  background: var(--accent) !important;
+  color: #FFFFFF !important;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.tfc-btn:hover {
+  background: #1740D6 !important;
+  transform: translateY(-1px);
+  color: #FFFFFF !important;
+}
+
+.tfc-btn--hero {
+  background: var(--green) !important;
+  border-color: var(--green) !important;
+}
+
+.tfc-btn--hero:hover {
+  background: #14895A !important;
+  border-color: #14895A !important;
+}
+
+/* ── SECTION HEADERS ── */
+.tfc-section-header { margin: 3rem 0 0.8rem !important; }
+
+.tfc-section-header h2 {
+  font-weight: 800 !important;
+  font-size: clamp(1.4rem, 2.4vw, 1.8rem) !important;
+  letter-spacing: -0.015em !important;
+  color: var(--ink) !important;
+  margin: 0 !important;
+  line-height: 1.2 !important;
+}
+
+.tfc-section-intro {
+  font-size: 0.95rem;
+  color: var(--ink-soft) !important;
+  max-width: 75ch;
+  margin: 0 0 1.5rem !important;
+}
+
+/* ── COURSE GRID ── */
+.tfc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.tfc-course {
+  display: flex;
+  flex-direction: column;
+  background: #FFFFFF !important;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.5rem 1.5rem 1.4rem;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.tfc-course:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(14, 23, 38, 0.09);
+}
+
+.tfc-course-path {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint) !important;
+  margin: 0 0 0.75rem !important;
+}
+
+.tfc-course h3 {
+  font-weight: 700 !important;
+  font-size: 1.2rem !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.008em !important;
+  color: var(--ink) !important;
+  margin: 0 0 0.55rem !important;
+}
+
+.tfc-course p {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: var(--ink-soft) !important;
+  margin: 0 0 1rem !important;
+}
+
+.tfc-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 1.2rem !important;
+  list-style: none !important;
+}
+
+.tfc-topics li {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft) !important;
+  background: var(--paper) !important;
+  border: 1px solid var(--line);
+  padding: 0.24rem 0.6rem;
+  border-radius: 6px;
+}
+
+.tfc-enquire {
+  margin-top: auto;
+  align-self: flex-start;
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  color: var(--accent) !important;
+  transition: color 0.15s ease;
+}
+
+.tfc-enquire:hover { color: #1740D6 !important; }
+
+/* ── HOW IT WORKS ── */
+.tfc-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  list-style: none !important;
+}
+
+.tfc-step {
+  background: #FFFFFF !important;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.3rem 1.3rem 1.25rem;
+}
+
+.tfc-step-num {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--green) !important;
+  margin: 0 0 0.6rem !important;
+}
+
+.tfc-step h3 {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: var(--ink) !important;
+  margin: 0 0 0.4rem !important;
+}
+
+.tfc-step p {
+  font-size: 0.85rem;
+  color: var(--ink-soft) !important;
+  margin: 0 !important;
+}
+
+/* ── TRAINER ── */
+.tfc-trainer {
+  background: #FFFFFF !important;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 1.6rem 1.7rem;
+}
+
+.tfc-trainer p {
+  font-size: 0.93rem;
+  color: var(--ink-soft) !important;
+  max-width: 78ch;
+  margin: 0 0 0.8rem !important;
+}
+
+.tfc-trainer p:last-child { margin-bottom: 0 !important; }
+
+.tfc-trainer strong { color: var(--ink) !important; }
+
+/* ── FAQ ── */
+.tfc-faq details {
+  background: #FFFFFF !important;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+}
+
+.tfc-faq details[open] { border-color: var(--accent); }
+
+.tfc-faq summary {
+  cursor: pointer;
+  padding: 0.9rem 1.15rem;
+  font-weight: 600 !important;
+  font-size: 0.93rem;
+  color: var(--ink) !important;
+  list-style: none;
+  user-select: none;
+}
+
+.tfc-faq summary::-webkit-details-marker { display: none; }
+
+.tfc-faq details p {
+  padding: 0 1.15rem 1rem;
+  font-size: 0.88rem;
+  color: var(--ink-soft) !important;
+  margin: 0 !important;
+}
+
+/* ── CLOSING CTA ── */
+.tfc-cta {
+  background: var(--term) !important;
+  border: 1px solid var(--term-line);
+  border-radius: 12px;
+  padding: 2.2rem 2.2rem 2.4rem;
+  margin-top: 3rem;
+}
+
+.tfc-cta h2 {
+  font-weight: 800 !important;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem) !important;
+  letter-spacing: -0.015em !important;
+  color: #F2F6FB !important;
+  margin: 0 0 0.6rem !important;
+}
+
+.tfc-cta p {
+  font-size: 0.95rem;
+  color: #97A4B8 !important;
+  max-width: 60ch;
+  margin: 0 0 1.4rem !important;
+}
+
+.tfc-cta .tfc-email {
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: 0.85rem !important;
+  color: var(--green-bright) !important;
+  margin-left: 1rem;
+}
+
+/* ── CONTAINER-AWARE RESPONSIVE LAYOUT ──
+   These respond to the actual WordPress content-column width, not merely
+   the browser viewport, so a laptop/sidebar layout cannot clip the page. */
+@container tfc-page (max-width: 820px) {
+  .tfc-grid { grid-template-columns: 1fr; }
+  .tfc-steps { grid-template-columns: 1fr; }
+}
+
+@container tfc-page (max-width: 560px) {
+  .tfc-hero-body { padding: 1.7rem 1.2rem 1.9rem; }
+  .tfc-hero-prompt { font-size: 0.72rem; }
+  .tfc-cta { padding: 1.6rem 1.3rem 1.8rem; }
+  .tfc-cta .tfc-email {
+    display: block;
+    margin: 0.8rem 0 0 !important;
+  }
+}
+
+/* Viewport fallbacks for browsers without container-query support. */
+@media (max-width: 900px) {
+  .tfc .tfc-grid { grid-template-columns: 1fr; }
+  .tfc .tfc-steps { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 560px) {
+  .tfc .tfc-hero-body { padding: 1.7rem 1.2rem 1.9rem; }
+  .tfc .tfc-hero-prompt { font-size: 0.72rem; }
+  .tfc .tfc-cta { padding: 1.6rem 1.3rem 1.8rem; }
+  .tfc .tfc-cta .tfc-email {
+    display: block;
+    margin: 0.8rem 0 0 !important;
+  }
+}
+</style>
+
+<div class="tfc tft-page-shell">
+<div class="tfc-wrap tft-page-inner">
+
+  <!-- HERO -->
+  <section class="tfc-hero">
+    <div class="tfc-hero-bar">
+      <div class="tfc-hero-dots"><span></span><span></span><span></span></div>
+      <span class="tfc-hero-bar-title">techfortalk — training</span>
+    </div>
+
+    <div class="tfc-hero-body">
+      <p class="tfc-hero-prompt">
+        <span class="u">vivek@techfortalk</span>:<span class="p">~</span>$ ls training/<span class="tfc-cursor"></span>
+      </p>
+
+      <h1>Professional training in <em>systems software engineering</em></h1>
+
+      <p class="tfc-hero-sub">
+        One-to-one and small-group training in C, C++, embedded systems, and
+        Linux — taught by a published C++ author and embedded software
+        engineer with 24+ years of industry experience. Every course is
+        hands-on, project-based, and tailored to your goals.
+      </p>
+
+      <a class="tfc-btn tfc-btn--hero"
+         href="mailto:vivek.bhadra@gmail.com?subject=Training%20enquiry">
+        Enquire by email
+      </a>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <div class="tfc-section-header">
+    <h2>Professional Training Programmes</h2>
+  </div>
+
+  <p class="tfc-section-intro">
+    Each course is delivered as structured, practical sessions on real code
+    and real hardware where relevant. For details, availability and pricing,
+    enquire on any course below.
+  </p>
+
+  <div class="tfc-grid">
+
+    <div class="tfc-course">
+      <span class="tfc-course-path">~/training/cpp-finance</span>
+      <h3>C++ for Finance</h3>
+      <p>
+        Performance-focused modern C++ for financial systems and trading
+        infrastructure. Build the language depth and low-latency instincts
+        that quant, HFT, and fintech roles demand — including targeted
+        preparation for technical interviews.
+      </p>
+      <ul class="tfc-topics">
+        <li>Modern C++ (11–26)</li>
+        <li>STL &amp; algorithms</li>
+        <li>Move semantics</li>
+        <li>Concurrency</li>
+        <li>Low-latency patterns</li>
+        <li>Profiling</li>
+        <li>Interview prep</li>
+      </ul>
+      <a class="tfc-enquire"
+         href="mailto:vivek.bhadra@gmail.com?subject=Training%20enquiry%3A%20C%2B%2B%20for%20Finance">
+        Enquire about this course →
+      </a>
+    </div>
+
+    <div class="tfc-course">
+      <span class="tfc-course-path">~/training/embedded-systems</span>
+      <h3>Embedded Systems Development in C/C++</h3>
+      <p>
+        From embedded C fundamentals to professional practice on real
+        microcontrollers: peripherals, communication protocols, debugging
+        on target, and writing firmware that is testable and maintainable.
+      </p>
+      <ul class="tfc-topics">
+        <li>Embedded C / C++</li>
+        <li>UART · SPI · I2C</li>
+        <li>Interrupts &amp; timers</li>
+        <li>On-target debugging</li>
+        <li>Firmware architecture</li>
+        <li>Unit testing</li>
+      </ul>
+      <a class="tfc-enquire"
+         href="mailto:vivek.bhadra@gmail.com?subject=Training%20enquiry%3A%20Embedded%20Systems%20Development%20in%20C%2FC%2B%2B">
+        Enquire about this course →
+      </a>
+    </div>
+
+    <div class="tfc-course">
+      <span class="tfc-course-path">~/training/linux-kernel</span>
+      <h3>Linux Kernel Development</h3>
+      <p>
+        A practical route into kernel engineering: kernel internals, building
+        and configuring the kernel, writing loadable modules, and the
+        debugging techniques professionals use on production systems.
+      </p>
+      <ul class="tfc-topics">
+        <li>Kernel internals</li>
+        <li>Loadable modules</li>
+        <li>Kernel build &amp; config</li>
+        <li>printk · ftrace</li>
+        <li>Memory &amp; scheduling</li>
+        <li>Debugging workflow</li>
+      </ul>
+      <a class="tfc-enquire"
+         href="mailto:vivek.bhadra@gmail.com?subject=Training%20enquiry%3A%20Linux%20Kernel%20Development">
+        Enquire about this course →
+      </a>
+    </div>
+
+    <div class="tfc-course">
+      <span class="tfc-course-path">~/training/device-drivers</span>
+      <h3>Writing Device Drivers from Scratch</h3>
+      <p>
+        Learn Linux device drivers the way they are written in industry:
+        character and platform drivers built from first principles, wired to
+        real hardware, with device tree, interrupts, and kernel-space
+        debugging covered in depth.
+      </p>
+      <ul class="tfc-topics">
+        <li>Character drivers</li>
+        <li>Platform drivers</li>
+        <li>Device tree</li>
+        <li>Interrupt handling</li>
+        <li>Kernel–user interfaces</li>
+        <li>Driver debugging</li>
+      </ul>
+      <a class="tfc-enquire"
+         href="mailto:vivek.bhadra@gmail.com?subject=Training%20enquiry%3A%20Writing%20Device%20Drivers%20from%20Scratch">
+        Enquire about this course →
+      </a>
+    </div>
+
+    <div class="tfc-course">
+      <span class="tfc-course-path">~/training/stm32-bootloader</span>
+      <h3>Embedded Software Development with STM32</h3>
+      <p>
+        Build a working bootloader on the STM32 Nucleo board using the ST
+        toolchain — STM32CubeMX, STM32CubeIDE, and STM32CubeProgrammer.
+        Understand memory maps, vector tables, application jumps, and
+        firmware update flows end to end.
+      </p>
+      <ul class="tfc-topics">
+        <li>STM32 Nucleo</li>
+        <li>STM32CubeMX</li>
+        <li>STM32CubeIDE</li>
+        <li>CubeProgrammer</li>
+        <li>Memory map &amp; vectors</li>
+        <li>Firmware update</li>
+      </ul>
+      <a class="tfc-enquire"
+         href="mailto:vivek.bhadra@gmail.com?subject=Training%20enquiry%3A%20Embedded%20Bootloader%20Development%20with%20STM32">
+        Enquire about this course →
+      </a>
+    </div>
+
+    <div class="tfc-course">
+      <span class="tfc-course-path">~/training/secure-bootloader</span>
+      <h3>Secure Bootloader Development</h3>
+      <p>
+        Go beyond a basic bootloader to a secure boot chain: image signing
+        and verification, encrypted firmware, rollback protection, and the
+        design decisions behind trustworthy firmware update on embedded
+        devices.
+      </p>
+      <ul class="tfc-topics">
+        <li>Chain of trust</li>
+        <li>Image signing</li>
+        <li>Signature verification</li>
+        <li>Firmware encryption</li>
+        <li>Rollback protection</li>
+        <li>Secure update design</li>
+      </ul>
+      <a class="tfc-enquire"
+         href="mailto:vivek.bhadra@gmail.com?subject=Training%20enquiry%3A%20Secure%20Bootloader%20Development">
+        Enquire about this course →
+      </a>
+    </div>
+
+    <div class="tfc-course">
+      <span class="tfc-course-path">~/training/bare-metal</span>
+      <h3>Bare-Metal Development</h3>
+      <p>
+        No RTOS, no HAL, no safety net: start from the reset vector and build
+        up — startup code, linker scripts, register-level peripheral
+        programming, and cross-compilation toolchains. The deepest way to
+        understand what your microcontroller actually does.
+      </p>
+      <ul class="tfc-topics">
+        <li>Startup code</li>
+        <li>Linker scripts</li>
+        <li>Register-level I/O</li>
+        <li>GCC cross-toolchain</li>
+        <li>Makefiles</li>
+        <li>Debug with GDB/OpenOCD</li>
+      </ul>
+      <a class="tfc-enquire"
+         href="mailto:vivek.bhadra@gmail.com?subject=Training%20enquiry%3A%20Bare-Metal%20Development">
+        Enquire about this course →
+      </a>
+    </div>
+
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="tfc-section-header">
+    <h2>How it works</h2>
+  </div>
+
+  <ol class="tfc-steps">
+    <li class="tfc-step">
+      <span class="tfc-step-num">STEP 1</span>
+      <h3>Enquire</h3>
+      <p>
+        Email with the course you're interested in, your current experience
+        level, and what you want to achieve.
+      </p>
+    </li>
+    <li class="tfc-step">
+      <span class="tfc-step-num">STEP 2</span>
+      <h3>Plan</h3>
+      <p>
+        You'll get a tailored training plan — scope, format, schedule, and
+        pricing — matched to your goals and starting point.
+      </p>
+    </li>
+    <li class="tfc-step">
+      <span class="tfc-step-num">STEP 3</span>
+      <h3>Train</h3>
+      <p>
+        Structured, hands-on sessions on real code and real hardware, with
+        exercises and review between sessions.
+      </p>
+    </li>
+  </ol>
+
+  <!-- TRAINER -->
+  <div class="tfc-section-header">
+    <h2>Your trainer</h2>
+  </div>
+
+  <div class="tfc-trainer">
+    <p>
+      <strong>Vivek Bhadra</strong> is a published C++ author and Embedded
+      Software Engineer with more than 24 years of professional experience
+      in C++, embedded systems, real-time software, and low-level
+      development, across industries including IoT, defence, EV charging,
+      networking, consumer electronics, and marine technology.
+    </p>
+    <p>
+      He is the author of <strong>Prompting C++ for Systems
+      Engineering</strong> and has provided structured tuition to students,
+      early-career engineers, experienced professionals, and
+      technical-interview candidates.
+    </p>
+  </div>
+
+  <!-- FAQ -->
+  <div class="tfc-section-header">
+    <h2>Frequently asked questions</h2>
+  </div>
+
+  <div class="tfc-faq">
+    <details>
+      <summary>How is the training delivered?</summary>
+      <p>
+        Sessions are delivered remotely as one-to-one or small-group
+        training. Hardware-based courses use affordable, widely available
+        boards (such as the STM32 Nucleo) that you work on directly.
+      </p>
+    </details>
+
+    <details>
+      <summary>Do I need prior experience?</summary>
+      <p>
+        It depends on the course. Foundation courses assume only basic
+        programming knowledge; advanced courses such as kernel development
+        or secure bootloaders assume working C experience. Your starting
+        point is assessed as part of the training plan.
+      </p>
+    </details>
+
+    <details>
+      <summary>What do I need to get started?</summary>
+      <p>
+        A computer capable of running a Linux environment (native or
+        virtual machine). For hardware courses, a development board is
+        required — recommendations and setup guidance are provided before
+        the first session.
+      </p>
+    </details>
+
+    <details>
+      <summary>How much does it cost?</summary>
+      <p>
+        Pricing depends on the course, format, and duration. Email
+        vivek.bhadra@gmail.com with the course you're interested in and
+        you'll receive full details.
+      </p>
+    </details>
+  </div>
+
+  <!-- CLOSING CTA -->
+  <section class="tfc-cta">
+    <h2>Ready to level up?</h2>
+    <p>
+      Tell me which course you're interested in and where you're starting
+      from, and I'll come back to you with a tailored plan and pricing.
+    </p>
+    <a class="tfc-btn"
+       href="mailto:vivek.bhadra@gmail.com?subject=Training%20enquiry">
+      Enquire by email
+    </a>
+    <span class="tfc-email">vivek.bhadra@gmail.com</span>
+  </section>
+
+</div>
+</div>
+<!-- /wp:html -->
